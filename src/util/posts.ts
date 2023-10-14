@@ -2,14 +2,24 @@ import type { Post } from "@prisma/client";
 import { db } from "@/server/db";
 
 //TODO: probably don't want an array of IDs, instead cursor based pagination
-export const getPosts = async (limit = 10) => {
+export const getPosts = async (
+  { limit, cursor }: { limit: number; cursor: number } = {
+    limit: 10,
+    cursor: 0,
+  },
+) => {
   const posts = await db.post.findMany({
+    where: {
+      id: {
+        gt: cursor,
+      },
+    },
     include: {
       comments: true,
       author: true,
       post_votes: {
         select: {
-          postId: true,
+          //postId: true,
           value: true,
         },
       },
@@ -40,9 +50,9 @@ export const getPosts = async (limit = 10) => {
   return postsWithVotes;
 };
 
-export const getPost = async (id: string) => {
-  return await getPosts(1);
-};
+// `export const getPost = async (id: string) => {
+//   return await getPosts(1);
+// };`
 
 //TODO: update to use next-auth
 export const createPost = async (data: Post) => {
@@ -52,8 +62,8 @@ export const createPost = async (data: Post) => {
   return post;
 };
 
-export const votePost = async (postId: string, value: 1 | -1) => {
-  const userId = "1"; //TODO: update to use next-auth
+export const votePost = async (postId: number, value: 1 | -1) => {
+  const userId = 1; //TODO: update to use next-auth
 
   let vote = await db.postVote.findFirst({
     where: { postId, authorId: userId },

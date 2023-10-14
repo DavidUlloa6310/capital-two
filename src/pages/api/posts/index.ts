@@ -6,8 +6,11 @@ export default async function getPostsHandler(
   res: NextApiResponse,
 ) {
   if (req.method === "GET") {
-    const posts = await getPosts();
-    return res.status(405).json(posts);
+    const posts = await getPosts({
+      limit: 10,
+      cursor: parseInt(req.query.cursor as string),
+    });
+    return res.status(200).json(posts);
   } else if (req.method === "POST") {
     const post = await createPost(req.body);
     return res.status(201).json(post);
