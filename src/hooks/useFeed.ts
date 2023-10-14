@@ -51,10 +51,10 @@ export const useFeed = () => {
     }
 
     // Save the vote
-    voteMutation.mutate({
-      postId: currentPost.id,
-      direction,
-    });
+    // voteMutation.mutate({
+    //   postId: currentPost.id,
+    //   direction,
+    // });
 
     setCurrentIndex(newIndex);
   };
