@@ -1,9 +1,11 @@
 import type { Post } from "@prisma/client";
 import { db } from "@/server/db";
+import { NewVote } from "@/schemas/voteSchemas";
 
 //TODO: probably don't want an array of IDs, instead cursor based pagination
 export const getPosts = async (
   { limit, cursor }: { limit: number; cursor: number } = {
+    //default values
     limit: 10,
     cursor: 0,
   },
@@ -20,7 +22,7 @@ export const getPosts = async (
       post_votes: {
         select: {
           //postId: true,
-          value: true,
+          direction: true,
         },
       },
     },
@@ -32,11 +34,11 @@ export const getPosts = async (
 
   const postsWithVotes = posts.map((post) => {
     const upvotes = post.post_votes.reduce(
-      (sum, vote) => (vote.value === 1 ? sum + 1 : sum),
+      (sum, vote) => (vote.direction === 1 ? sum + 1 : sum),
       0,
     );
     const downvotes = post.post_votes.reduce(
-      (sum, vote) => (vote.value === -1 ? sum + 1 : sum),
+      (sum, vote) => (vote.direction === -1 ? sum + 1 : sum),
       0,
     );
 
@@ -62,26 +64,27 @@ export const createPost = async (data: Post) => {
   return post;
 };
 
-export const votePost = async (postId: number, value: 1 | -1) => {
-  const userId = 1; //TODO: update to use next-auth
+export const votePost = async (newVote: NewVote) => {
+  const authorId = 1; //TODO: update to use next-auth
 
   let vote = await db.postVote.findFirst({
-    where: { postId, authorId: userId },
+    where: { postId: newVote.postId, authorId },
   });
 
   if (vote) {
+    const newDirection = newVote.direction * -1;
     return await db.postVote.update({
       where: { id: vote.id },
       data: {
-        value: value * -1,
+        direction: newDirection,
       },
     });
   } else {
     return await db.postVote.create({
       data: {
-        postId,
-        authorId: userId,
-        value,
+        postId: newVote.postId,
+        authorId: authorId,
+        direction: newVote.direction,
       },
     });
   }
