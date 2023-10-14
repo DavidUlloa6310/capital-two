@@ -8,7 +8,7 @@ export default async function getPostsHandler(
   if (req.method === "GET") {
     const posts = await getPosts({
       limit: 10,
-      cursor: parseInt(req.query.cursor as string),
+      cursor: parseInt(req.query.cursor as string) || 0,
     });
     return res.status(200).json(posts);
   } else if (req.method === "POST") {
