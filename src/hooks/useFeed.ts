@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "react-query";
 import { useState } from "react";
 import { useVoteMutation } from "@/hooks/useVoteMutation";
-import { Post } from "@prisma/client";
+import type { PostWithRelations } from "@/types/PostWithRelations";
 
 const POSTS_PER_PAGE = 10;
 const REFETCH_BUFFER = 3; // Number of posts left before we fetch more
@@ -24,7 +24,7 @@ export const useFeed = () => {
     hasNextPage,
     isFetching,
     isFetchingNextPage,
-  } = useInfiniteQuery<Post[], Error>({
+  } = useInfiniteQuery<PostWithRelations[], Error>({
     queryKey: ["feed"],
     queryFn: fetchFeed,
     getNextPageParam: (lastPage, pages) =>
@@ -54,7 +54,7 @@ export const useFeed = () => {
   const performSwipe = (direction: -1 | 1) => {
     if (!data || !data.pages) return;
 
-    const newIndex = currentIndex + direction;
+    const newIndex = currentIndex + 1;
     const numPostsRemaining =
       data.pages.reduce((total, page) => total + page.length, 0) - newIndex;
 

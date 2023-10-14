@@ -35,16 +35,23 @@ const Swipe = () => {
 
   const handleSwipeLeft = () => {
     setHasSwipedLeft(true);
-    performSwipe(1);
+    performSwipe(-1);
     console.log("Swiped Left");
+
+    setTimeout(() => {
+      setHasSwipedLeft(false);
+    }, 400);
   };
 
   const handleSwipeRight = () => {
     setHasSwipedRight(true);
     performSwipe(1);
     console.log("Swiped Right");
-  };
 
+    setTimeout(() => {
+      setHasSwipedRight(false);
+    }, 400);
+  };
   const [hasSwipedRight, setHasSwipedRight] = useState(false);
   const [hasSwipedLeft, setHasSwipedLeft] = useState(false);
 
@@ -93,8 +100,8 @@ const Swipe = () => {
                 title="Hard Coded title"
                 author={`${currentPost.author.first_name} ${currentPost.author.last_name}`}
                 income={123123123123}
-                location={currentPost.author.location}
-                age={currentPost.author.age}
+                location={currentPost.author.location ?? "Hidden"}
+                age={currentPost.author.age ?? 0}
               />
               <CommentSection {...currentPost} />
             </>

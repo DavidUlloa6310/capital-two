@@ -11,7 +11,7 @@ async function main() {
     last_name: `Lastname`,
     age: 25, // You can adjust this as needed
     income: 50000, // You can adjust this as needed
-    credit: 650,
+    credit_score: 650,
     posts: {
       create: Array.from({ length: numberOfPostsPerUser }).map((_, j) => ({
         content: `Post ${j + 1} by User`,

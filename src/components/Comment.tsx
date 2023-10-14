@@ -36,8 +36,8 @@ const Comment = ({ authorId, content }: CommentProps) => {
   }, []);
 
   return (
-    <div className="text-light">
-      <div>{content}</div>
+    <div className="text-light text-sm">
+      <div className="text-lg">{content}</div>
       <div className="mt-4 flex items-center justify-start text-sm">
         <Metadata
           Icon={AiOutlineUser}

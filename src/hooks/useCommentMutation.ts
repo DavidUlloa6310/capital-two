@@ -1,9 +1,6 @@
-import { useMutation, useQueryClient } from "react-query";
-import type { Post, Comment } from "@prisma/client";
-
-interface PostWithComments extends Post {
-  comments: Comment[];
-}
+import { useMutation, useQueryClient, type InfiniteData } from "react-query";
+import type { PostWithRelations } from "@/types/PostWithRelations";
+import type { Comment } from "@prisma/client";
 
 const addComment = ({
   content,
@@ -14,7 +11,10 @@ const addComment = ({
 }) => {
   return fetch(`/api/posts/${postId}/comment`, {
     method: "POST",
-    body: JSON.stringify({ content }),
+    body: JSON.stringify({ content, postId }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 };
 
@@ -23,25 +23,53 @@ export const useCommentMutation = () => {
 
   return useMutation(["addComment"], addComment, {
     onMutate: async (newComment) => {
+      const completeNewComment: Comment = {
+        ...newComment,
+        id: Math.floor(Math.random() * 1000),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        authorId: 1,
+      };
+
       // Cancel any outgoing refetches
       // (so they don't overwrite our optimistic update)
-      await queryClient.cancelQueries({ queryKey: ["posts"] });
+      await queryClient.cancelQueries({ queryKey: ["feed"] });
 
       // Snapshot the previous value
-      const previousPosts = queryClient.getQueryData(["posts"]) as Post[];
+      const previousPosts = queryClient.getQueryData<PostWithRelations[]>([
+        "feed",
+      ]);
 
-      // Optimistically add the comment to the correct post
-      queryClient.setQueryData(["posts"], (old: any) => {
-        return old.map((post: PostWithComments) => {
-          if (post.id === newComment.postId) {
-            return {
-              ...post,
-              comments: [...post.comments, newComment],
-            };
-          }
-          return post;
-        });
+      queryClient.setQueryData<
+        InfiniteData<Array<PostWithRelations>> | undefined
+      >(["feed"], (oldData) => {
+        if (!oldData) {
+          return {
+            pages: [[]], // Initialize with empty data
+            pageParams: [],
+          };
+        }
+
+        const newData = oldData?.pages.map((page) =>
+          page.map((item) => {
+            if (item.id === newComment.postId) {
+              return {
+                ...item,
+                comments: [...item.comments, completeNewComment],
+              };
+            } else {
+              return item;
+            }
+          }),
+        );
+        return {
+          ...oldData,
+          pages: newData,
+        };
       });
+
+      console.log("previousPosts", previousPosts);
+      console.log("New data", queryClient.getQueryData(["feed"]));
 
       // Return a context object with the snapshotted value
       return { previousPosts };

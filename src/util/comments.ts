@@ -5,7 +5,7 @@ import { newCommentSchema, type NewComment } from "@/schemas/commentSchemas";
 //No method to get comments since that's included in the getPost method
 
 export const createComment = async (comment: NewComment) => {
-  const authorId = 123; //TODO: get authorId from session
+  const authorId = 1; //TODO: get authorId from session
 
   const result = await db.comment.create({
     data: {

@@ -12,7 +12,7 @@ export default async function getPostsHandler(
       case "POST":
         const { content, postId } = newCommentSchema.parse(req.body);
         const comment = await createComment({ content, postId });
-        return res.status(405).json(comment);
+        return res.status(200).json(comment);
       default:
         return res.status(405).json({ message: "Method not allowed" });
     }
