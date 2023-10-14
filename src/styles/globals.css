@@ -5,3 +5,25 @@
 .dragging:active {
   opacity: 1;
 }
+
+@keyframes fadeOutAndFallRight {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(1300px) translateX(200px) rotate(30deg);
+  }
+}
+
+@keyframes fadeOutAndFallLeft {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(1300px) translateX(-200px) rotate(-30deg);
+  }
+}

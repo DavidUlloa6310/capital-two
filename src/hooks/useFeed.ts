@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from "react-query";
 import { useState } from "react";
 import { useVoteMutation } from "@/hooks/useVoteMutation";
+import { Post } from "@prisma/client";
 
 const POSTS_PER_PAGE = 10;
 const REFETCH_BUFFER = 3; // Number of posts left before we fetch more
@@ -13,7 +14,7 @@ const fetchFeed = async ({ pageParam = 0 }) => {
 };
 
 export const useFeed = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const {
     data,
@@ -23,25 +24,39 @@ export const useFeed = () => {
     hasNextPage,
     isFetching,
     isFetchingNextPage,
-  } = useInfiniteQuery({
+  } = useInfiniteQuery<Post[], Error>({
     queryKey: ["feed"],
     queryFn: fetchFeed,
-    getNextPageParam: (lastPage, pages) => lastPage[lastPage.length - 1].id,
+    getNextPageParam: (lastPage, pages) =>
+      lastPage ? lastPage[lastPage.length - 1]?.id : null,
   });
 
   const voteMutation = useVoteMutation();
+
+  // Determine the current, next, and previous posts based on the current index
+  const currentPost =
+    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)]?.[
+      currentIndex % POSTS_PER_PAGE
+    ];
+  const nextPost =
+    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)]?.[
+      (currentIndex % POSTS_PER_PAGE) + 1
+    ];
+  const previousPost =
+    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)]?.[
+      (currentIndex % POSTS_PER_PAGE) - 1
+    ];
 
   /*
    * Called when the user swipes left or right
    * @param direction -1 for left, 1 for right
    */
   const performSwipe = (direction: -1 | 1) => {
-    if (!data) return;
+    if (!data || !data.pages) return;
 
     const newIndex = currentIndex + direction;
     const numPostsRemaining =
-      data.pages[data.pages.length - 1].length -
-      (currentIndex % POSTS_PER_PAGE);
+      data.pages.reduce((total, page) => total + page.length, 0) - newIndex;
 
     // Check if the new index is out of bounds
     if (newIndex < 0 || numPostsRemaining <= 0) return;
@@ -58,19 +73,6 @@ export const useFeed = () => {
 
     setCurrentIndex(newIndex);
   };
-
-  const currentPost =
-    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
-      currentIndex % POSTS_PER_PAGE
-    ];
-  const nextPost =
-    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
-      (currentIndex % POSTS_PER_PAGE) + 1
-    ];
-  const previousPost =
-    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
-      (currentIndex % POSTS_PER_PAGE) - 1
-    ];
 
   return {
     performSwipe,

@@ -10,9 +10,12 @@ async function main() {
     first_name: `User`,
     last_name: `Lastname`,
     age: 25, // You can adjust this as needed
+    income: 50000, // You can adjust this as needed
+    credit: 650,
     posts: {
       create: Array.from({ length: numberOfPostsPerUser }).map((_, j) => ({
         content: `Post ${j + 1} by User`,
+        title: "An interesting title",
         comments: {
           create: Array.from({ length: numberOfCommentsPerPost }).map(
             (_, k) => ({

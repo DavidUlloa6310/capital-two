@@ -1,46 +1,35 @@
-import React, { useState } from "react";
+import { useState, FormEvent } from "react";
 import Comment from "./Comment";
+import { Comment as TComment } from "@prisma/client";
 import { IoArrowRedoOutline } from "react-icons/io5";
 
 interface CommentSectionProps {
-  comments: [];
+  author: {
+    first_name: string;
+    last_name: string;
+  };
+  comments: TComment[];
 }
 
-const CommentSection = () => {
-  const [comments, setComments] = useState([
-    {
-      content:
-        "“GloriousPenguin, you should really look into a retirement ETF and not avocado toast 🤣”",
-      author: "StarryMiner#419",
-      income: "$220,000",
-      age: "41",
-    },
-    {
-      content: "“You know, that's valid. Who doesn't love Avocado toast?”",
-      author: "JuliusArmadillo#092",
-      income: "$71,000",
-      age: "25",
-    },
-    {
-      content: "“Where can I sign up!? Avocado Toast to the moon!”",
-      author: "PerryPlatypus#984",
-      income: "$20,000",
-      age: "19",
-    },
-  ]);
+const CommentSection = ({ author, comments }: CommentSectionProps) => {
   const [newComment, setNewComment] = useState("");
+
+  function submitComment(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    alert("submitted");
+  }
 
   return (
     <div className="mr-8 mt-10 h-fit rounded border border-gray-300 p-4">
       <h3 className="mb-4 text-xl font-semibold">Comments</h3>
       <div className="space-y-4">
-        {comments.map((comment, index) => (
+        {comments.map(({ authorId, content }, index) => (
           <div key={index} className="rounded bg-gray-100 p-3">
-            <Comment comment={comment} />
+            <Comment authorId={authorId} content={content} />
           </div>
         ))}
       </div>
-      <div className="mt-4 flex space-x-2">
+      <form onSubmit={submitComment} className="mt-4 flex space-x-2">
         <input
           type="text"
           className="w-full rounded border border-gray-300 p-2"
@@ -48,10 +37,13 @@ const CommentSection = () => {
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
         />
-        <button className="rounded bg-[#0f395a] px-3 py-0 text-white">
+        <button
+          className="rounded bg-[#0f395a] px-3 py-0 text-white"
+          type="submit"
+        >
           <IoArrowRedoOutline />
         </button>
-      </div>
+      </form>
     </div>
   );
 };

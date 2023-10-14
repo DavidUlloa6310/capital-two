@@ -17,7 +17,11 @@ export const getPosts = async (
       },
     },
     include: {
-      comments: true,
+      comments: {
+        include: {
+          author: true,
+        },
+      },
       author: true,
       post_votes: {
         select: {

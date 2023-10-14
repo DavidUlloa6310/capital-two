@@ -8,12 +8,13 @@ export default async function getPostsHandler(
   res: NextApiResponse,
 ) {
   try {
-    if (req.method === "POST") {
-      const { content, postId } = newCommentSchema.parse(req.body);
-      const comment = await createComment({ content, postId });
-      return res.status(405).json(comment);
-    } else {
-      return res.status(405).json({ message: "Method not allowed" });
+    switch (req.method) {
+      case "POST":
+        const { content, postId } = newCommentSchema.parse(req.body);
+        const comment = await createComment({ content, postId });
+        return res.status(405).json(comment);
+      default:
+        return res.status(405).json({ message: "Method not allowed" });
     }
   } catch (error) {
     if (error instanceof z.ZodError) {

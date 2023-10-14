@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import CommentSection from "@/components/CommentSection";
 import UserInfo from "@/components/UserInfo";
 import { useFeed } from "@/hooks/useFeed";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Swipe = () => {
   const {
@@ -34,14 +34,19 @@ const Swipe = () => {
   ];
 
   const handleSwipeLeft = () => {
+    setHasSwipedLeft(true);
     performSwipe(1);
     console.log("Swiped Left");
   };
 
   const handleSwipeRight = () => {
+    setHasSwipedRight(true);
     performSwipe(1);
     console.log("Swiped Right");
   };
+
+  const [hasSwipedRight, setHasSwipedRight] = useState(false);
+  const [hasSwipedLeft, setHasSwipedLeft] = useState(false);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error has occurred: {error.message}</div>;
@@ -54,28 +59,46 @@ const Swipe = () => {
           {[
             { data: nextPost, zIndex: 1 },
             { data: currentPost, zIndex: 2 },
-          ].map((card, index) => (
-            <div
-              key={`${card.data.id}, ${index}`}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                zIndex: card.zIndex,
-              }}
-            >
-              <SwipeCard
-                content={card.data.content}
-                author={card.data.author.first_name}
-                onSwipeLeft={handleSwipeLeft}
-                onSwipeRight={handleSwipeRight}
-              />
-            </div>
-          ))}
+          ].map(
+            (card, index) =>
+              card.data && (
+                <div
+                  key={`${card.data.id}, ${index}`}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    zIndex: card.zIndex,
+                    animation: hasSwipedRight
+                      ? "fadeOutAndFallRight 0.4s linear"
+                      : hasSwipedLeft
+                      ? "fadeOutAndFallLeft 0.4s linear"
+                      : "none",
+                  }}
+                >
+                  <SwipeCard
+                    content={card.data.content}
+                    author={card.data.author.first_name}
+                    onSwipeLeft={handleSwipeLeft}
+                    onSwipeRight={handleSwipeRight}
+                  />
+                </div>
+              ),
+          )}
         </div>
         <div className="col-span-3 mt-6 text-3xl font-light">
-          <UserInfo />
-          <CommentSection {...{ currentPost }} />
+          {currentPost && (
+            <>
+              <UserInfo
+                title="Hard Coded title"
+                author={`${currentPost.author.first_name} ${currentPost.author.last_name}`}
+                income={123123123123}
+                location={currentPost.author.location}
+                age={currentPost.author.age}
+              />
+              <CommentSection {...currentPost} />
+            </>
+          )}
         </div>
       </div>
     </>

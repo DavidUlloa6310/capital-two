@@ -8,6 +8,11 @@ export default {
         roboto: "Roboto",
         lilita: "Lilita One",
       },
+      colors: {
+        primary: "#0E395A",
+        secondary: "#FF374F",
+        mainGray: "#9F9F9F",
+      },
     },
   },
   plugins: [],
