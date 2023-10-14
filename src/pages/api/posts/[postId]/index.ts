@@ -1,16 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getPosts, createPost } from "@/util/posts";
+import { getPost, createPost } from "@/util/posts";
 
 export default async function getPostsHandler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   if (req.method === "GET") {
-    const posts = await getPosts();
-    return res.status(405).json(posts);
-  } else if (req.method === "POST") {
-    const post = await createPost(req.body);
-    return res.status(201).json(post);
+    const post = await getPost(req.query.postId as string);
+    return res.status(405).json(post);
   } else {
     return res.status(405).json({ message: "Method not allowed" });
   }

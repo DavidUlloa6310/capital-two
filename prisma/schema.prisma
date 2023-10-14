@@ -68,20 +68,20 @@ model User {
     job_title    String?
     accounts     Account[]
     sessions     Session[]
-    Post         Post[]
-    Comment      Comment[]
-    PostUpvote   PostUpvote[]
+    posts        Post[]
+    comments     Comment[]
+    post_upvotes PostUpvote[]
 }
 
 model Post {
-    id         String       @id @default(cuid())
-    content    String
-    author     User?        @relation(fields: [authorId], references: [id])
-    authorId   String?
-    createdAt  DateTime     @default(now())
-    updatedAt  DateTime     @updatedAt
-    Comment    Comment[]
-    PostUpvote PostUpvote[]
+    id           String       @id @default(cuid())
+    content      String
+    author       User?        @relation(fields: [authorId], references: [id])
+    authorId     String?
+    createdAt    DateTime     @default(now())
+    updatedAt    DateTime     @updatedAt
+    comments     Comment[]
+    post_upvotes PostUpvote[]
 }
 
 model Comment {
@@ -104,4 +104,7 @@ model PostUpvote {
     value     Int
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    // Define a compound unique constraint on authorId and postId
+    @@unique([authorId, postId])
 }
