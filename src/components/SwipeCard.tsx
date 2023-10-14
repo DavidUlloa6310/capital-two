@@ -28,9 +28,11 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
 
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     setStartX(e.clientX);
+    e.currentTarget.classList.add("dragging");
   };
 
   const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+    e.currentTarget.classList.remove("dragging");
     const deltaX = e.clientX - startX;
     const cardWidth = e.currentTarget.clientWidth;
 
@@ -43,7 +45,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
 
   return (
     <div
-      className={`ml-6 mt-6 h-[89%] w-[96%] rounded-md bg-[#0f395a] ${
+      className={`ml-6 mt-6 h-[700px] w-[500px] rounded-md bg-[#0f395a] active:opacity-100 ${
         isSwiped ? "hidden" : "block"
       }`}
       draggable="true"
@@ -51,9 +53,9 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
       onDragEnd={handleDragEnd}
     >
       <div
-        className={`relative top-5 ml-5 mr-4 h-[84%] w-[93%] transform rounded-md border bg-white p-4 shadow-md`}
+        className={`relative top-5 ml-5 mr-4 h-[84%] w-[93%] transform rounded-md border bg-white p-4 shadow-md active:opacity-100 `}
       >
-        <p className="w-[30ch] text-3xl font-light leading-normal">{content}</p>
+        <p className="w-full text-3xl font-light leading-normal">{content}</p>
         <Image
           priority
           src={"/content_triangle_ish.png"}

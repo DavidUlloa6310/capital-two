@@ -27,7 +27,7 @@ const CommentSection = () => {
   const [newComment, setNewComment] = useState("");
 
   return (
-    <div className="mr-8 mt-10 h-[60%] rounded border border-gray-300 p-4">
+    <div className="mr-8 mt-10 h-fit rounded border border-gray-300 p-4">
       <h3 className="mb-4 text-xl font-semibold">Comments</h3>
       <div className="space-y-4">
         {comments.map((comment, index) => (
