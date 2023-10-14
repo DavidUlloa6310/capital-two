@@ -87,10 +87,10 @@ model Post {
 model Comment {
     id        Int      @id @default(autoincrement())
     content   String
-    author    User?    @relation(fields: [authorId], references: [id])
-    authorId  Int?
-    post      Post?    @relation(fields: [postId], references: [id])
-    postId    Int?
+    author    User     @relation(fields: [authorId], references: [id])
+    authorId  Int
+    post      Post     @relation(fields: [postId], references: [id])
+    postId    Int
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
@@ -101,7 +101,7 @@ model PostVote {
     postId    Int?
     author    User?    @relation(fields: [authorId], references: [id])
     authorId  Int?
-    value     Int
+    direction Int
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 

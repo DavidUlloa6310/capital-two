@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { votePost } from "@/util/posts";
-import { newVoteSchema } from "@/schemas/voteSchemas";
+import { createComment } from "@/util/comments";
+import { newCommentSchema } from "@/schemas/commentSchemas";
 import z from "zod";
 
 export default async function getPostsHandler(
@@ -9,10 +9,9 @@ export default async function getPostsHandler(
 ) {
   try {
     if (req.method === "POST") {
-      const { direction, postId } = newVoteSchema.parse(req.body);
-
-      const vote = await votePost({ direction, postId });
-      return res.status(405).json(vote);
+      const { content, postId } = newCommentSchema.parse(req.body);
+      const comment = await createComment({ content, postId });
+      return res.status(405).json(comment);
     } else {
       return res.status(405).json({ message: "Method not allowed" });
     }
