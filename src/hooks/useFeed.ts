@@ -60,7 +60,9 @@ export const useFeed = () => {
   };
 
   const currentPost =
-    data?.pages[currentIndex / POSTS_PER_PAGE][currentIndex % POSTS_PER_PAGE];
+    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
+      currentIndex % POSTS_PER_PAGE
+    ];
   const nextPost =
     data?.pages[currentIndex / POSTS_PER_PAGE][
       (currentIndex % POSTS_PER_PAGE) + 1
