@@ -1,6 +1,6 @@
 import SwipeCard from "@/components/SwipeCard";
 import Navbar from "@/components/Navbar";
-import Interaction from "@/components/Interaction";
+import CommentSection from "@/components/CommentSection";
 import UserInfo from "@/components/UserInfo";
 
 const Swipe = () => {
@@ -24,20 +24,21 @@ const Swipe = () => {
   return (
     <>
       <Navbar />
-      <div className="flex">
-        <div className="h-screen items-center justify-center">
+      <div className="flex gap-20">
+        <div className="h-screen">
           {cardData.map((data, index) => (
             <SwipeCard
               key={index}
+              content={data.content}
               author={data.author}
               onSwipeLeft={handleSwipeLeft}
               onSwipeRight={handleSwipeRight}
             />
           ))}
         </div>
-        <div className="flex flex-col">
+        <div className="mt-6 w-60 flex-1 text-3xl font-light ml-4">
           <UserInfo />
-          <Interaction />
+          <CommentSection />
         </div>
       </div>
     </>
