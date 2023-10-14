@@ -8,6 +8,10 @@ export default {
         roboto: "Roboto",
         lilita: "Lilita One",
       },
+      colors: {
+        capital_blue: "#0E395A",
+        capital_red: "#FF374F",
+      },
     },
   },
   plugins: [],

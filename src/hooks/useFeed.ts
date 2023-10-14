@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from "react-query";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useVoteMutation } from "@/hooks/useVoteMutation";
+import type { Post } from "@prisma/client";
 
 const POSTS_PER_PAGE = 10;
 const REFETCH_BUFFER = 3; // Number of posts left before we fetch more
@@ -9,7 +10,7 @@ const fetchFeed = async ({ pageParam = 0 }) => {
   const posts = await fetch(
     `/api/posts?cursor=${pageParam}?limit=${POSTS_PER_PAGE}`,
   );
-  return posts.json();
+  return posts.json() as Promise<Post[]>;
 };
 
 export const useFeed = () => {
@@ -23,20 +24,48 @@ export const useFeed = () => {
     hasNextPage,
     isFetching,
     isFetchingNextPage,
-  } = useInfiniteQuery({
+  } = useInfiniteQuery<Post[]>({
     queryKey: ["feed"],
     queryFn: fetchFeed,
-    getNextPageParam: (lastPage, pages) => lastPage[lastPage.length - 1].id,
+    getNextPageParam: (lastPage) => lastPage[lastPage.length - 1]?.id,
   });
 
   const voteMutation = useVoteMutation();
+
+  let currentPost: Post | undefined, nextPost: Post, previousPost: Post;
+
+  const currentPostRef = useRef<Post>();
+
+  useEffect(() => {
+    const nothing = data?.pages[0]?[0]
+    if (data?.pages[0]?[0]) { }
+    currentPostRef.current = data?.pages[0]?[0]
+  }, [currentIndex, data])
+
+  // useEffect(() => {
+  //   if (!data) return;
+    
+  //   currentPostRef.current  = data.pages[Math.floor(currentIndex / POSTS_PER_PAGE)]?[currentIndex % POSTS_PER_PAGE]
+  //   // currentPost =
+  //   //   data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)]?[
+  //   //     currentIndex % POSTS_PER_PAGE
+  //   //   ];
+  //   // nextPost =
+  //   //   data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
+  //   //     (currentIndex % POSTS_PER_PAGE) + 1
+  //   //   ];
+  //   // previousPost =
+  //   //   data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
+  //   //     (currentIndex % POSTS_PER_PAGE) - 1
+  //   //   ];
+  // }, [currentIndex, data]);
 
   /*
    * Called when the user swipes left or right
    * @param direction -1 for left, 1 for right
    */
-  const performSwipe = (direction: -1 | 1) => {
-    if (!data) return;
+  const performSwipe = async (direction: -1 | 1) => {
+    if (!data || data.pages.length === 0 || !currentPost) return;
 
     const newIndex = currentIndex + direction;
     const numPostsRemaining =
@@ -47,7 +76,7 @@ export const useFeed = () => {
     if (newIndex < 0 || numPostsRemaining <= 0) return;
     // Check if we need to fetch more posts
     if (numPostsRemaining < REFETCH_BUFFER) {
-      fetchNextPage();
+      await fetchNextPage();
     }
 
     // Save the vote
@@ -59,18 +88,18 @@ export const useFeed = () => {
     setCurrentIndex(newIndex);
   };
 
-  const currentPost =
-    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
-      currentIndex % POSTS_PER_PAGE
-    ];
-  const nextPost =
-    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
-      (currentIndex % POSTS_PER_PAGE) + 1
-    ];
-  const previousPost =
-    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
-      (currentIndex % POSTS_PER_PAGE) - 1
-    ];
+  // const currentPost =
+  //   data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
+  //     currentIndex % POSTS_PER_PAGE
+  //   ];
+  // const nextPost =
+  //   data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
+  //     (currentIndex % POSTS_PER_PAGE) + 1
+  //   ];
+  // const previousPost =
+  //   data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)][
+  //     (currentIndex % POSTS_PER_PAGE) - 1
+  //   ];
 
   return {
     performSwipe,

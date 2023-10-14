@@ -11,6 +11,12 @@ const Swipe = () => {
       content:
         "“Just invested 80% of my paycheck into a local artisanal avocado toast subscription service 🥑🍞, because who needs a savings account when you've got gourmet breakfast for days? 🤷🏻‍♂️ Now seeking advice on how to explain to my landlord that avocados are the new gold 🥇🏠. #SanFrancisco #MillennialProblems #SendHelpAndRentMoney”",
     },
+    {
+      author: "GloriousPenguin#126",
+      income: "$15,000",
+      content:
+        "“Just invested 80% of my paycheck into a local artisanal avocado toast subscription service 🥑🍞, because who needs a savings account when you've got gourmet breakfast for days? 🤷🏻‍♂️ Now seeking advice on how to explain to my landlord that avocados are the new gold 🥇🏠. #SanFrancisco #MillennialProblems #SendHelpAndRentMoney”",
+    },
   ];
 
   const handleSwipeLeft = () => {
@@ -36,7 +42,7 @@ const Swipe = () => {
             />
           ))}
         </div>
-        <div className="mt-6 w-60 flex-1 text-3xl font-light ml-4">
+        <div className="ml-4 mt-6 w-60 flex-1 text-3xl font-light">
           <UserInfo />
           <CommentSection />
         </div>

@@ -1,4 +1,4 @@
-import type { Post } from "@prisma/client";
+import type { Post, PostVote } from "@prisma/client";
 import { db } from "@/server/db";
 import { NewVote } from "@/schemas/voteSchemas";
 
@@ -67,7 +67,7 @@ export const createPost = async (data: Post) => {
 export const votePost = async (newVote: NewVote) => {
   const authorId = 1; //TODO: update to use next-auth
 
-  let vote = await db.postVote.findFirst({
+  const vote = await db.postVote.findFirst({
     where: { postId: newVote.postId, authorId },
   });
 
