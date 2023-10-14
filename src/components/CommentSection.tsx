@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Comment from "./Comment";
 import { IoArrowRedoOutline } from "react-icons/io5";
 
+interface CommentSectionProps {
+  comments: [];
+}
+
 const CommentSection = () => {
   const [comments, setComments] = useState([
     {

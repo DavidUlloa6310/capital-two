@@ -45,7 +45,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
   };
 
   return (
-    <Draggable>
+    <Draggable bounds={{ right: 175, left: -175, top: -25, bottom: 20 }}>
       <div
         className={`ml-6 mt-6 h-[700px] w-[500px] rounded-md bg-[#0f395a] active:opacity-100
         `}

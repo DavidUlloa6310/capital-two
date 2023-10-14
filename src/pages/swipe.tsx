@@ -75,7 +75,7 @@ const Swipe = () => {
         </div>
         <div className="col-span-3 mt-6 text-3xl font-light">
           <UserInfo />
-          <CommentSection />
+          <CommentSection {...{ currentPost }} />
         </div>
       </div>
     </>
