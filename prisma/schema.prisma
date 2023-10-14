@@ -56,10 +56,10 @@ model VerificationToken {
 }
 
 model User {
-    id           String       @id @default(cuid())
+    id           String     @id @default(cuid())
     first_name   String?
     last_name    String?
-    email        String?      @unique
+    email        String?    @unique
     age          Int?
     last_login   DateTime?
     //Financial information
@@ -70,18 +70,18 @@ model User {
     sessions     Session[]
     posts        Post[]
     comments     Comment[]
-    post_upvotes PostUpvote[]
+    post_votes   PostVote[]
 }
 
 model Post {
-    id           String       @id @default(cuid())
-    content      String
-    author       User?        @relation(fields: [authorId], references: [id])
-    authorId     String?
-    createdAt    DateTime     @default(now())
-    updatedAt    DateTime     @updatedAt
-    comments     Comment[]
-    post_upvotes PostUpvote[]
+    id         String     @id @default(cuid())
+    content    String
+    author     User?      @relation(fields: [authorId], references: [id])
+    authorId   String?
+    createdAt  DateTime   @default(now())
+    updatedAt  DateTime   @updatedAt
+    comments   Comment[]
+    post_votes PostVote[]
 }
 
 model Comment {
@@ -95,7 +95,7 @@ model Comment {
     updatedAt DateTime @updatedAt
 }
 
-model PostUpvote {
+model PostVote {
     id        String   @id @default(cuid())
     post      Post?    @relation(fields: [postId], references: [id])
     postId    String?
