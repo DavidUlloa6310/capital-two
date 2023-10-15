@@ -112,7 +112,12 @@ function generateNicknames(): string[] {
   ];
 
   let nicknames = [];
-  for (let i = 0; i < adjectives.length; ++i)
+  for (let i = 0; i < adjectives.length; ++i) {
+    for (let j = 0; j < nouns.length; ++j) {
+      nicknames.push(`${adjectives[i]} ${nouns[j]}`);
+    }
+  }
+  return nicknames;
 }
 
 function simpleHashFunction(key: string): number {
@@ -123,4 +128,8 @@ function getArrayIndex(key: string, arraySize: number): number {
   const hashValue = simpleHashFunction(key);
   const arrayIndex = hashValue % arraySize;
   return arrayIndex;
+}
+
+export function getUserNickname(email: string) {
+  return nicknames[getArrayIndex(email, nicknames.length)];
 }

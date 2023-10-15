@@ -11,13 +11,15 @@ import { type PostWithRelations } from "@/types/PostWithRelations";
 
 function PostDetails({ posts }: { posts: PostWithRelations[] }) {
   return (
-    <div className="mx-[50px] ">
+    <>
       <h2 className=" text-roboto text-3xl font-bold">Your Posts</h2>
-      {posts.length == 0 ? <h2>You have no posts!</h2> : null}
-      {posts.map((post) => {
-        return <PostItem post={post} />;
-      })}
-    </div>
+      <div className="mx-[50px] flex gap-10">
+        {posts.length == 0 ? <h2>You have no posts!</h2> : null}
+        {posts.map((post) => {
+          return <PostItem post={post} />;
+        })}
+      </div>
+    </>
   );
 }
 

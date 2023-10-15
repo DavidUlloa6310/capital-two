@@ -15,7 +15,7 @@ export default async function getPostsHandler(
       const session = await getServerSession(req, res, authOptions);
 
       const vote = await votePost({ direction, postId }, session);
-      return res.status(405).json(vote);
+      return res.status(200).json(vote);
     } else {
       return res.status(405).json({ message: "Method not allowed" });
     }

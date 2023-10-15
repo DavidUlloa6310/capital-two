@@ -9,7 +9,10 @@ const votePost = ({
 }) => {
   return fetch(`/api/posts/${postId}/vote`, {
     method: "POST",
-    body: JSON.stringify({ direction }),
+    body: JSON.stringify({ postId, direction }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 };
 

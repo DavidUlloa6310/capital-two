@@ -54,6 +54,12 @@ export const useFeed = () => {
   const performSwipe = (direction: -1 | 1) => {
     if (!data || !data.pages) return;
 
+    // Save the vote
+    voteMutation.mutate({
+      postId: currentPost!.id,
+      direction,
+    });
+
     const newIndex = currentIndex + 1;
     const numPostsRemaining =
       data.pages.reduce((total, page) => total + page.length, 0) - newIndex;
@@ -64,12 +70,6 @@ export const useFeed = () => {
     if (numPostsRemaining < REFETCH_BUFFER) {
       fetchNextPage();
     }
-
-    // Save the vote
-    // voteMutation.mutate({
-    //   postId: currentPost.id,
-    //   direction,
-    // });
 
     setCurrentIndex(newIndex);
   };
