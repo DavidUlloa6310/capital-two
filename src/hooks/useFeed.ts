@@ -10,7 +10,7 @@ const fetchFeed = async ({ pageParam = 0 }) => {
   const posts = await fetch(
     `/api/posts?cursor=${pageParam}?limit=${POSTS_PER_PAGE}`,
   );
-  return posts.json() as Promise<Post[]>;
+  return posts.json();
 };
 
 export const useFeed = () => {
@@ -70,7 +70,7 @@ export const useFeed = () => {
     if (newIndex < 0 || numPostsRemaining <= 0) return;
     // Check if we need to fetch more posts
     if (numPostsRemaining < REFETCH_BUFFER) {
-      await fetchNextPage();
+      fetchNextPage();
     }
 
     setCurrentIndex(newIndex);

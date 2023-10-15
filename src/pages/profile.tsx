@@ -14,6 +14,7 @@ import PostDetails from "@/components/Profile/PostDetails";
 import { PostWithRelations } from "@/types/PostWithRelations";
 import { useUserData } from "@/hooks/useUserData";
 import { UserData } from "@/types/UserData";
+import LoadingSpinner from "@/components/LoadingSpinner";
 export default function Profile() {
   const session = useSession();
 
@@ -38,7 +39,7 @@ export default function Profile() {
     return <SigninWarning />;
   }
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
   if (error) return <div>An error has occurred: {error.message}</div>;
 
   return (

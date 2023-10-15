@@ -16,11 +16,6 @@ interface UserDataProps {
   onChange: (data: string) => void;
 }
 
-interface AuthorRouteType {
-  profile: UserData;
-  posts;
-}
-
 function UserData({ Icon, iconColor, name, value, onChange }: UserDataProps) {
   return (
     <div className="flex items-center justify-start">

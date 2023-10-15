@@ -16,7 +16,7 @@ function PostDetails({ posts }: { posts: PostWithRelations[] }) {
       <div className="flex w-full flex-wrap items-center justify-center gap-10 px-[50px]">
         {posts.length == 0 ? <h2>You have no posts!</h2> : null}
         {posts.map((post) => {
-          return <PostItem post={post} />;
+          return <PostItem post={post} key={post.id} />;
         })}
       </div>
     </>
