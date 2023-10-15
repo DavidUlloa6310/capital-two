@@ -41,12 +41,12 @@ export const useFeed = () => {
       currentIndex % POSTS_PER_PAGE
     ];
   const nextPost =
-    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)]?.[
-      (currentIndex % POSTS_PER_PAGE) + 1
+    data?.pages[Math.floor((currentIndex + 1) / POSTS_PER_PAGE)]?.[
+      (currentIndex + 1) % POSTS_PER_PAGE
     ];
   const previousPost =
-    data?.pages[Math.floor(currentIndex / POSTS_PER_PAGE)]?.[
-      (currentIndex % POSTS_PER_PAGE) - 1
+    data?.pages[Math.floor((currentIndex - 1) / POSTS_PER_PAGE)]?.[
+      (currentIndex - 1) % POSTS_PER_PAGE
     ];
 
   /*
@@ -65,6 +65,8 @@ export const useFeed = () => {
     const newIndex = currentIndex + 1;
     const numPostsRemaining =
       data.pages.reduce((total, page) => total + page.length, 0) - newIndex;
+
+    console.log("numPostsRemaining", numPostsRemaining);
 
     // Check if the new index is out of bounds
     if (newIndex < 0 || numPostsRemaining <= 0) return;

@@ -70,7 +70,7 @@ const UserProfile = ({ user }: { user: UserData }) => {
 
     const response: UserData = await request.json();
 
-    setIncome(String(response.profile.income));
+    setIncome(response.profile.income as unknown as string);
     setAge(response.profile.age);
     setLocation(response.profile.location);
 

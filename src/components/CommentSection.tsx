@@ -28,7 +28,6 @@ const CommentSection = ({ id: postId, comments }: CommentSectionProps) => {
       return;
     }
 
-    // @ts-ignore
     commentMutation.mutate({
       content: newComment,
       postId,
