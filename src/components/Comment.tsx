@@ -7,9 +7,15 @@ import { BiCake } from "react-icons/bi";
 import { IconType } from "react-icons";
 import { RxDividerVertical } from "react-icons/rx";
 import { getUserNickname } from "@/util/nicknames";
+import type { Comment } from "@prisma/client";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 interface CommentProps extends Pick<User, "name" | "income" | "age"> {
   content: string;
+  createdAt: Date;
 }
 
 function Metadata({ data, Icon }: { data: ReactNode; Icon: IconType }) {
@@ -21,7 +27,9 @@ function Metadata({ data, Icon }: { data: ReactNode; Icon: IconType }) {
   );
 }
 
-const Comment = ({ name, income, age, content }: CommentProps) => {
+const Comment = ({ name, income, age, content, createdAt }: CommentProps) => {
+  const formattedDate = dayjs(createdAt).fromNow();
+
   return (
     <div className="text-light text-sm">
       <div className="text-lg">{content}</div>
@@ -37,6 +45,10 @@ const Comment = ({ name, income, age, content }: CommentProps) => {
         <RxDividerVertical className="mx-2 text-xl text-mainGray" />
 
         <Metadata data={`${age ?? "Unknown"} years old`} Icon={BiCake} />
+
+        {"   "}
+
+        <h4 className="ml-4">{formattedDate}</h4>
       </div>
     </div>
   );

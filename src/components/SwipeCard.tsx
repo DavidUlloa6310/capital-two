@@ -69,7 +69,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
       x: down ? mx : overThreshold ? mx * 3 : 0,
       y: down ? my : overThreshold ? my : 0,
       rotate: down ? rotation : overThreshold ? mx / 12 : 0,
-      opacity: down ? 1 - Math.abs(mx) ** 1.08 / 1000 : overThreshold ? 0 : 1,
+      opacity: down ? 1 - Math.abs(mx) ** 1.13 / 2000 : overThreshold ? 0 : 1,
     });
 
     if (!down && overThreshold) {

@@ -55,12 +55,12 @@ const CommentSection = ({ id: postId, comments }: CommentSectionProps) => {
         className="flex h-[24rem] flex-col-reverse gap-3 overflow-y-scroll"
         ref={(e) => (commentWrapperRef.current = e)}
       >
-        {comments.map(({ author, content }, index) => (
+        {comments.map(({ author, content, createdAt }, index) => (
           <div
             key={index}
             className="w-full rounded-lg bg-gray-100 p-3 hover:bg-gray-200 hover:shadow-md"
           >
-            <Comment {...author} content={content} />
+            <Comment {...author} content={content} createdAt={createdAt} />
           </div>
         ))}
       </div>

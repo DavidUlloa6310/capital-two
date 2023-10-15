@@ -28,7 +28,7 @@ export const useFeed = () => {
     queryKey: ["feed"],
     queryFn: fetchFeed,
     getNextPageParam: (lastPage, pages) => {
-      console.log("lastPage", lastPage, "pages", pages);
+      // console.log("lastPage", lastPage, "pages", pages);
       return lastPage ? lastPage[lastPage.length - 1]?.id : null;
     },
   });
