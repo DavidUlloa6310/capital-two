@@ -24,7 +24,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="h-full w-[50%] rounded-md border-2 border-gray-200 bg-white p-4">
+    <div className="h-full w-[50%] rounded-md border border-gray-200 bg-mainGray bg-opacity-5 p-4 hover:shadow">
       <h2 className="mb-4 text-2xl font-semibold">Create a New Post</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -57,16 +57,16 @@ const CreatePost = () => {
             name="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gray-300 p-2"
+            className="mt-1 max-h-[200px] min-h-[75px] w-full rounded-md border border-gray-300 p-2"
             placeholder="Write your post content here"
           />
         </div>
 
-        <div className="mt-11 flex justify-start">
+        <div className="mt-9 flex justify-start">
           <button
             disabled={createPostMutation.isLoading}
             type="submit"
-            className="hover-bg-blue-600 rounded-md bg-[#0f395a] px-4 py-2 text-white"
+            className="hover-bg-blue-600 rounded-md bg-capital_blue px-4 py-2 text-white"
           >
             Create Post
           </button>

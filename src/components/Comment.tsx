@@ -6,6 +6,7 @@ import { MdOutlineAttachMoney } from "react-icons/md";
 import { BiCake } from "react-icons/bi";
 import { IconType } from "react-icons";
 import { RxDividerVertical } from "react-icons/rx";
+import { getUserNickname } from "@/util/nicknames";
 
 interface CommentProps extends Pick<User, "name" | "income" | "age"> {
   content: string;
@@ -25,17 +26,17 @@ const Comment = ({ name, income, age, content }: CommentProps) => {
     <div className="text-light text-sm">
       <div className="text-lg">{content}</div>
       <div className="mt-4 flex items-center justify-start text-sm">
-        <Metadata Icon={AiOutlineUser} data={name} />
+        <Metadata Icon={AiOutlineUser} data={getUserNickname(name)} />
 
         <RxDividerVertical className="mx-2 text-xl text-mainGray" />
 
         <Metadata
-          data={income?.toLocaleString("en-US")}
+          data={income?.toLocaleString("en-US") || "Hidden"}
           Icon={MdOutlineAttachMoney}
         />
         <RxDividerVertical className="mx-2 text-xl text-mainGray" />
 
-        <Metadata data={`${age} years old`} Icon={BiCake} />
+        <Metadata data={`${age || "Unknown"} years old`} Icon={BiCake} />
       </div>
     </div>
   );

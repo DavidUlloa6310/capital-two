@@ -10,40 +10,61 @@ interface SwipeCardProps {
   zIndex: number;
 }
 
+const removeThreshold = 100;
+
+const calculateColor = (mx: number) => {
+  // Determine the percentage of swipe progress
+  const progress =
+    Math.min(Math.abs(mx) * 0.6, removeThreshold) / removeThreshold;
+  // console.log("Progress", progress);
+
+  // Define the color stops
+  const defaultColor = [14, 57, 90];
+  const green = [34, 197, 94];
+  const red = [255, 55, 79];
+
+  // Determine which color stop to use (red or green)
+  const targetColor = mx < 0 ? red : green;
+
+  // Calculate the interpolated color based on progress
+  const interpolatedColor = defaultColor.map((component, index) =>
+    Math.round(
+      (1 - progress) * defaultColor[index]! + progress * targetColor[index]!,
+    ),
+  );
+
+  // Convert the color values to RGB format
+  const rgbColor = {
+    red: interpolatedColor[0],
+    green: interpolatedColor[1],
+    blue: interpolatedColor[2],
+  };
+
+  const str = `rgb(${rgbColor.red}, ${rgbColor.green}, ${rgbColor.blue})`;
+  return str;
+};
+
 const SwipeCard: React.FC<SwipeCardProps> = ({
   author,
   content,
   handleSwipe,
   zIndex,
 }) => {
-  const removeThreshold = 300;
-  const [isSwiped, setIsSwiped] = useState<-1 | 1 | null>(null);
-
   const [springs, api] = useSpring(() => ({
     x: 0,
     y: 0,
     rotate: 0,
     opacity: 1,
-    // onRest: () => {
-    //   console.log("On rest running");
-    //   if (isSwiped !== null) {
-    //     console.log("isSwiped is not null", isSwiped);
-    //     handleSwipe(isSwiped);
-    //   }
-    // },
   }));
 
   const bind = useDrag(({ down, movement: [mx, my], velocity, last }) => {
-    const overThreshold = Math.abs(mx) > removeThreshold;
+    const overThreshold = Math.abs(mx) > removeThreshold || velocity[0] > 2;
     //if over the threshold and mouse is up, then remove the card
-    if (overThreshold) {
-      setIsSwiped(mx < 0 ? -1 : 1);
-    }
 
     const rotation = mx / 25;
     api.start({
-      x: down ? mx : overThreshold ? mx * 2 : 0,
-      y: down ? my : 0,
+      x: down ? mx : overThreshold ? mx * 3 : 0,
+      y: down ? my : overThreshold ? my : 0,
       rotate: down ? rotation : overThreshold ? mx / 12 : 0,
       opacity: down ? 1 - Math.abs(mx) ** 1.08 / 1000 : overThreshold ? 0 : 1,
     });
@@ -58,10 +79,11 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
 
   return (
     <animated.div
-      className="absolute left-0 top-0 h-[700px] w-[500px] rounded-md bg-[#0f395a]"
+      className="absolute left-0 top-0 h-[700px] w-[500px] select-none overflow-y-scroll rounded-md"
       style={{
         zIndex,
         ...springs,
+        backgroundColor: springs.x.to((x) => calculateColor(x)),
       }}
       {...bind()}
     >
@@ -71,11 +93,11 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
         <p className="w-full text-3xl font-light leading-normal">{content}</p>
         <Image
           priority
-          src={"/content_triangle_ish.png"}
+          src={"/content_triangle_ish.svg"}
           alt=""
           width={40}
           height={40}
-          className="absolute -bottom-11 right-0"
+          className="absolute -bottom-9 right-0"
         />
       </div>
       <div className="mb-2 ml-6 mt-11 text-3xl font-light text-white">

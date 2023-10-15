@@ -353,55 +353,54 @@
    ],
     "posts": [
       {
-        "content": "I've been researching the different options for retirement funds and it's been overwhelming. From 401(k)s to IRAs, there's a lot to consider. I'm also not sure how much I should be contributing each month to meet my retirement goals. It's a lot to take in, but I'm committed to making informed decisions for a secure future.",
-        "title": "Navigating Retirement Options",
+        "content": "Decided to invest in a 'sure thing'—my nephew's lemonade stand. Return on investment: zero. But hey, the lemonade is pretty decent.",
+        "title": "The Lemonade Stand Fiasco",
+        "authorId": 12
+      },
+      {
+        "content": "Turns out, budgeting is like dieting, but for your wallet. Still failing at both.",
+        "title": "Budgeting: The Diet I Never Wanted",
+        "authorId": 27
+      },
+      {
+        "content": "Just bought stocks for the first time. Feeling like a Wolf of Wall Street, but more like a Chihuahua of Main Street.",
+        "title": "The Chihuahua of Wall Street",
+        "authorId": 3
+      },
+      {
+        "content": "Joined a couponing group to save money. Now I have a lifetime supply of toothpaste but no money left.",
+        "title": "Extreme Couponing: My Toothpaste Saga",
+        "authorId": 14
+      },
+      {
+        "content": "I've decided to diversify my investment portfolio. Currently, it's 90% coffee and 10% regret.",
+        "title": "Coffee & Regrets Portfolio",
+        "authorId": 8
+      },
+      {
+        "content": "Who knew adulting would mean getting excited about a credit score update? What's next, celebrating tax season?",
+        "title": "Credit Score Fever",
         "authorId": 41
       },
-      
       {
-        "content": "I got a big tax refund this year and was tempted to splurge on a vacation or shopping. However, I decided to put it toward paying off my credit card debt. It feels less exciting in the moment, but I know it's the smarter financial move. I'm trying to focus on the long-term benefits of being debt-free.",
-        "title": "Smart Choices with Tax Refund",
-        "authorId": 24
+        "content": "I was told to save money for a rainy day. It finally rained today, and I spent all the money on a raincoat and boots.",
+        "title": "A Rainy Day Indeed",
+        "authorId": 21
       },
       {
-        "content": "I recently switched jobs and had to decide what to do with my old 401(k). After researching, I chose to roll it over into an IRA for more investment options and lower fees. The process was a bit confusing with all the paperwork, but I'm glad I took the time to understand my options and make a choice that benefits me in the long run.",
-        "title": "401(k) Rollover Decisions",
-        "authorId": 26
+        "content": "I tried to become financially literate, but it's like learning a foreign language where every word is 'taxes'.",
+        "title": "The Financial Rosetta Stone",
+        "authorId": 17
       },
       {
-        "content": "Just paid off my student loan! Feeling free!",
-        "title": "Debt-Free at Last",
-        "authorId": 1
+        "content": "Saving money by cooking at home. So far, the fire department has shown up twice. Still a work in progress.",
+        "title": "Chef or Fire Hazard?",
+        "authorId": 32
       },
       {
-        "content": "My credit score dropped out of nowhere. Any clues?",
-        "title": "Credit Score Mystery",
-        "authorId": 1
-      },
-      {
-        "content": "Saved up an emergency fund in just one year. It was tough but so rewarding.",
-        "title": "Financial Security",
-        "authorId": 2
-      },
-      {
-        "content": "Unexpected medical bill wiped out my savings. What do I do now?",
-        "title": "Financial Hit",
-        "authorId": 2
-      },
-      {
-        "content": "Started investing in stocks. Let's see how it goes!",
-        "title": "Into the Stock Market",
-        "authorId": 3
-      },
-      {
-        "content": "Why are rent prices so high? It's getting impossible to save.",
-        "title": "Rent Frustration",
-        "authorId": 3
-      },
-      {
-        "content": "Got a huge tax refund this year! Where should I put the money?",
-        "title": "Tax Refund Choices",
-        "authorId": 4
+        "content": "Decided to cut the cable to save money. Now I spend my time arguing about what to watch on three different streaming services.",
+        "title": "Streaming Wars",
+        "authorId": 45
       },
       {
         "content": "Credit card debt is killing me. Need help to get out of it.",
@@ -594,57 +593,107 @@
         "authorId": 38
       },
       {
-        "content": "Just realized that eating out has been draining my wallet. Time to start cooking at home more.",
-        "title": "Dining Out Dilemma",
-        "authorId": 25
-      },
-      {
-        "content": "Was feeling down and went on a shopping spree. Instant regret.",
-        "title": "Retail Regret",
-        "authorId": 19
-      },
-      {
-        "content": "Switched to a high-interest savings account. Why didn't I do this sooner?",
-        "title": "Better Savings",
-        "authorId": 35
-      },
-      {
-        "content": "Got a speeding ticket that set me back $150. Don't speed, folks!",
-        "title": "Speeding Costs",
-        "authorId": 42
-      },
-      {
-        "content": "I've been freelancing for a few months, but managing taxes is a headache.",
-        "title": "Freelance Frustrations",
-        "authorId": 1
-      },
-      {
-        "content": "Sold some old stuff on eBay. Decluttered my home and made some money.",
-        "title": "Declutter and Profit",
-        "authorId": 17
-      },
-      {
-        "content": "Thinking about getting a pet, but the costs are making me hesitate. Any advice?",
-        "title": "Pet Planning",
-        "authorId": 31
-      },
-      {
-        "content": "A friend pitched me a 'can't lose' investment opportunity. It sounded too good to be true, so I decided to research it. Turns out, it was a pyramid scheme! Always do your homework before diving into any financial decisions.",
-        "title": "Dodging a Bad Investment",
-        "authorId": 47
-      },
-      {
-        "content": "I just started a side gig to make some extra money. It's tiring to work after my regular job, but the extra income is nice and it's giving me some peace of mind.",
-        "title": "The Side Hustle Grind",
+        "content": "Tried to use a budgeting app but ended up spending all my money on in-app purchases. Oh, the irony.",
+        "title": "Budgeting App Fail",
         "authorId": 29
       },
       {
-        "content": "I recently had a child and am looking into setting up a college fund for them. The cost of higher education keeps rising, and I want to be prepared. Starting early seems to be the key.",
-        "title": "Planning for Child's Education",
-        "authorId": 45
+        "content": "My get-rich-quick scheme involves finding a penny and hoping for the best.",
+        "title": "Get Rich Slow",
+        "authorId": 15
+      },
+      {
+        "content": "Decided to save on groceries by eating out less. Now my fridge is full of science experiments.",
+        "title": "The Fridge Lab",
+        "authorId": 33
+      },
+      {
+        "content": "Just started freelance work. It's all fun and games until the tax forms arrive.",
+        "title": "The Taxman Cometh",
+        "authorId": 22
+      },
+      {
+        "content": "Said I'd never buy coffee out again to save money. Three days later, I'm considering a loan for a latte.",
+        "title": "The Latte Loan",
+        "authorId": 47
+      },
+      {
+        "content": "They say money talks, but mine just waves goodbye.",
+        "title": "Goodbye, Money!",
+        "authorId": 40
+      },
+      {
+        "content": "Built my emergency fund. Now, I'm just waiting for an emergency to happen.",
+        "title": "Emergency Fund FOMO",
+        "authorId": 6
+      },
+      {
+        "content": "I keep hearing 'invest in your future.' Does that mean more video games?",
+        "title": "Investing in Pixels",
+        "authorId": 50
+      },
+      {
+        "content": "Did my taxes myself and the IRS hasn't arrested me. Yet.",
+        "title": "DIY Taxes",
+        "authorId": 19
+      },
+      {
+        "content": "Took a personal finance course online. Now I'm broke AND educated!",
+        "title": "Educated But Broke",
+        "authorId": 5
       }
     ],
     "comments": [
+      {
+        "authorId": 15,
+        "postId": 53,
+        "content": "Ah, the joys of adulting. Where a 'fun day out' means visiting IKEA to buy a cheaper coffee table."
+      },
+      {
+        "authorId": 29,
+        "postId": 27,
+        "content": "Bought a new car, huh? May your life be as smooth as your ride and your payments as short as my attention span."
+      },
+      {
+        "authorId": 4,
+        "postId": 34,
+        "content": "Just got a raise? Drinks are on you! Oh, wait. Taxes. Nevermind."
+      },
+      {
+        "authorId": 36,
+        "postId": 22,
+        "content": "Setting up a 401(k)? Ah, playing the long game. I can't even commit to a 30-minute TV show."
+      },
+      {
+        "authorId": 11,
+        "postId": 5,
+        "content": "Invested in real estate? You're literally laying the foundation for future mistakes. Just kidding, good luck!"
+      },
+      {
+        "authorId": 9,
+        "postId": 17,
+        "content": "Credit card limit increased? You've just unlocked the 'Debt Expansion Pack'!"
+      },
+      {
+        "authorId": 18,
+        "postId": 48,
+        "content": "Trying to cut expenses? Ah, playing 'Financial Jenga,' are we?"
+      },
+      {
+        "authorId": 47,
+        "postId": 16,
+        "content": "You're diversifying your portfolio? I diversify my cereal choice, and that's about it."
+      },
+      {
+        "authorId": 21,
+        "postId": 7,
+        "content": "Got financial advice from Reddit? Ah, venturing into the Wild West of wisdom, I see."
+      },
+      {
+        "authorId": 37,
+        "postId": 40,
+        "content": "Canceled your gym membership to save money? Your wallet's getting fat while you're getting fit at home."
+      },
       {
         "authorId": 1,
         "postId": 1,
@@ -764,6 +813,131 @@
         "authorId": 1,
         "postId": 2,
         "content": "Maybe cut up that credit card."
+      },
+      {
+        "authorId": 23,
+        "postId": 7,
+        "content": "Wow, starting a small business is no small feat. Kudos to you for taking that leap. How did you go about securing the loan?"
+      },
+      {
+        "authorId": 12,
+        "postId": 32,
+        "content": "I totally understand the first paycheck shock. Taxes can take a big chunk out. The best way to cope is to budget accordingly."
+      },
+      {
+        "authorId": 49,
+        "postId": 21,
+        "content": "An emergency fund saved me last year when I lost my job. It's great that you had one too; it's an underrated financial safety net."
+      },
+      {
+        "authorId": 8,
+        "postId": 46,
+        "content": "Dining out can be such a budget killer! I had to learn the hard way too. Cooking at home has not only saved me money but also improved my health."
+      },
+      {
+        "authorId": 34,
+        "postId": 15,
+        "content": "Budgeting was a game-changer for me too. It's amazing how much money you can save just by knowing where it all goes."
+      },
+      {
+        "authorId": 18,
+        "postId": 52,
+        "content": "Congrats on dodging that pyramid scheme. Always trust your instincts and do your research."
+      },
+      {
+        "authorId": 4,
+        "postId": 27,
+        "content": "The side hustle grind is real! What are you doing for your side job? It's always good to have multiple income streams."
+      },
+      {
+        "authorId": 30,
+        "postId": 3,
+        "content": "Starting early for your child's education is so important, especially with how expensive college can get. What kind of fund are you considering?"
+      },
+      {
+        "authorId": 15,
+        "postId": 56,
+        "content": "I was in a similar situation with an unexpected home repair. It's a wake-up call for sure. Do you have any tips for budgeting for these kinds of surprises?"
+      },
+      {
+        "authorId": 40,
+        "postId": 9,
+        "content": "Credit cards can be a double-edged sword. It's great that you're using it responsibly to build your credit. Just keep an eye on that balance."
+      },
+      {
+        "authorId": 46,
+        "postId": 50,
+        "content": "Having an emergency fund is so crucial. You never know when life will throw curveballs at you."
+      },
+      {
+        "authorId": 27,
+        "postId": 20,
+        "content": "Investing in stocks is exciting but risky. I started small and did a ton of research before diving in. What's your strategy?"
+      },
+      {
+        "authorId": 3,
+        "postId": 41,
+        "content": "That's frustrating about the credit score drop. Did you manage to find out the reason? Sometimes, even small things can have a big impact."
+      },
+      {
+        "authorId": 21,
+        "postId": 29,
+        "content": "I feel your pain on the high rent. It's been a big hurdle for me too when it comes to saving."
+      },
+      {
+        "authorId": 43,
+        "postId": 37,
+        "content": "Credit card debt can be so crippling. Have you considered a debt consolidation plan? It helped a friend of mine get back on track."
+      },
+      {
+        "authorId": 7,
+        "postId": 12,
+        "content": "Investing in Dogecoin? To the moon, or maybe to the nearest trash can. Either way, you're in for a ride!"
+      },
+      {
+        "authorId": 33,
+        "postId": 26,
+        "content": "Paying off student loans? Congrats, you're now free to make other poor life choices! Like adulting!"
+      },
+      {
+        "authorId": 22,
+        "postId": 45,
+        "content": "You started a budget? Ah, the adult coloring book. Fill in the lines or else it gets messy!"
+      },
+      {
+        "authorId": 17,
+        "postId": 8,
+        "content": "You decided to cook at home to save money? Get ready for 'Gordon Ramsay's Kitchen Nightmares: Home Edition!'"
+      },
+      {
+        "authorId": 48,
+        "postId": 31,
+        "content": "Credit card debt is like a pet tiger. Cool at first, but then it eats you."
+      },
+      {
+        "authorId": 50,
+        "postId": 2,
+        "content": "Ahhh, the first paycheck. You discover taxes and suddenly, that gross pay is not so 'gross' anymore, eh?"
+      },
+      {
+        "authorId": 19,
+        "postId": 38,
+        "content": "Saving for retirement at 25? Look at you, being all responsible while some of us are still trying to figure out how to cook rice!"
+      },
+      {
+        "authorId": 39,
+        "postId": 18,
+        "content": "An emergency fund is like a fire extinguisher. You never appreciate it until your financial kitchen catches fire."
+      },
+      {
+        "authorId": 44,
+        "postId": 42,
+        "content": "You missed the Bitcoin train? Don't worry, there's always the FOMO rollercoaster!"
+      },
+      {
+        "authorId": 32,
+        "postId": 6,
+        "content": "Your credit score dropped? Welcome to the adult version of losing points in a video game. Except it's less fun and you can't respawn."
       }
     ]
   }

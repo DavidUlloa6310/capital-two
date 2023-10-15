@@ -7,6 +7,7 @@ import { useFeed } from "@/hooks/useFeed";
 import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import SigninWarning from "@/components/SigninWarning";
+import { getUserNickname } from "@/util/nicknames";
 
 const Swipe = () => {
   const {
@@ -52,7 +53,7 @@ const Swipe = () => {
                     key={card.data.id}
                     zIndex={card.zIndex}
                     content={card.data.content}
-                    author={card.data.author.name}
+                    author={getUserNickname(card.data.author.name) as string}
                     handleSwipe={performSwipe}
                   />
                 ),
@@ -64,7 +65,7 @@ const Swipe = () => {
             <>
               <UserInfo
                 title={currentPost.title || "a post without a title"}
-                author={`${currentPost.author.name}`}
+                author={`${getUserNickname(currentPost.author.name)}`}
                 income={currentPost.author.income ?? 0}
                 location={currentPost.author.location ?? "Hidden"}
                 age={currentPost.author.age ?? 0}
