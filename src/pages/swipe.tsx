@@ -4,6 +4,7 @@ import CommentSection from "@/components/CommentSection";
 import UserInfo from "@/components/UserInfo";
 import { useFeed } from "@/hooks/useFeed";
 import { useEffect, useState } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Swipe = () => {
   const {
@@ -18,20 +19,13 @@ const Swipe = () => {
     error,
   } = useFeed();
 
+  const { data: session } = useSession();
+
   useEffect(() => {
     console.log("Changed current post", currentPost);
     console.log("Changed next post", nextPost);
     console.log("Changed previous post", previousPost);
   }, [currentPost]);
-
-  const cardData = [
-    {
-      author: "GloriousPenguin#125",
-      income: "$15,000",
-      content:
-        "“Just invested 80% of my paycheck into a local artisanal avocado toast subscription service 🥑🍞, because who needs a savings account when you've got gourmet breakfast for days? 🤷🏻‍♂️ Now seeking advice on how to explain to my landlord that avocados are the new gold 🥇🏠. #SanFrancisco #MillennialProblems #SendHelpAndRentMoney”",
-    },
-  ];
 
   const handleSwipeLeft = () => {
     setHasSwipedLeft(true);
@@ -58,46 +52,57 @@ const Swipe = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error has occurred: {error.message}</div>;
 
+  if (session == null) {
+    return (
+      <main className="flex min-h-screen w-screen flex-col items-center justify-center">
+        <h2>Make sure to login to view other's posts</h2>
+      </main>
+    );
+  }
+
   return (
-    <>
+    <main>
       <Navbar />
-      <div className="grid grid-cols-5 gap-20">
-        <div className="relative col-span-2 h-screen">
-          {[
-            { data: nextPost, zIndex: 1 },
-            { data: currentPost, zIndex: 2 },
-          ].map(
-            (card, index) =>
-              card.data && (
-                <div
-                  key={`${card.data.id}, ${index}`}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    zIndex: card.zIndex,
-                    animation: hasSwipedRight
-                      ? "fadeOutAndFallRight 0.4s linear"
-                      : hasSwipedLeft
-                      ? "fadeOutAndFallLeft 0.4s linear"
-                      : "none",
-                  }}
-                >
-                  <SwipeCard
-                    content={card.data.content}
-                    author={card.data.author.first_name}
-                    onSwipeLeft={handleSwipeLeft}
-                    onSwipeRight={handleSwipeRight}
-                  />
-                </div>
-              ),
-          )}
+      <div className="grid grid-cols-8 gap-20 p-5">
+        <div className="align-center col-span-3 flex items-center justify-center">
+          <div className="relative h-[700px] w-[500px]">
+            {[
+              { data: nextPost, zIndex: 1 },
+              { data: currentPost, zIndex: 2 },
+            ].map(
+              (card, index) =>
+                card.data && (
+                  <div
+                    key={`${card.data.id}, ${index}`}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+
+                      zIndex: card.zIndex,
+                      animation: hasSwipedRight
+                        ? "fadeOutAndFallRight 0.4s linear"
+                        : hasSwipedLeft
+                        ? "fadeOutAndFallLeft 0.4s linear"
+                        : "none",
+                    }}
+                  >
+                    <SwipeCard
+                      content={card.data.content}
+                      author={card.data.author.first_name}
+                      onSwipeLeft={handleSwipeLeft}
+                      onSwipeRight={handleSwipeRight}
+                    />
+                  </div>
+                ),
+            )}
+          </div>
         </div>
-        <div className="col-span-3 mt-6 text-3xl font-light">
+        <div className="col-span-5 text-3xl font-light">
           {currentPost && (
             <>
               <UserInfo
-                title="Hard Coded title"
+                title={currentPost.title || "a post without a title"}
                 author={`${currentPost.author.first_name} ${currentPost.author.last_name}`}
                 income={123123123123}
                 location={currentPost.author.location ?? "Hidden"}
@@ -108,7 +113,7 @@ const Swipe = () => {
           )}
         </div>
       </div>
-    </>
+    </main>
   );
 };
 export default Swipe;

@@ -22,9 +22,9 @@ export const useCommentMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation(["addComment"], addComment, {
-    onMutate: async (newComment) => {
-      const completeNewComment: Comment = {
-        ...newComment,
+    onMutate: async (data) => {
+      const newComment: Comment = {
+        ...data,
         id: Math.floor(Math.random() * 1000),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -55,7 +55,7 @@ export const useCommentMutation = () => {
             if (item.id === newComment.postId) {
               return {
                 ...item,
-                comments: [...item.comments, completeNewComment],
+                comments: [...item.comments, newComment],
               };
             } else {
               return item;

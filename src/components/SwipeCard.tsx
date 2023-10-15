@@ -17,6 +17,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
 }) => {
   const removeThreshold = 70;
   const [hasSwiped, setHasSwiped] = useState(false);
+  const [offset, setOffset] = useState(0);
 
   const handleSwipe = (direction: string) => {
     if (direction === "left") {
@@ -33,17 +34,24 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
     }
   };
 
+  const handleDrag = (_: DraggableEvent, data: DraggableData) => {
+    setOffset(Math.abs(data.x));
+
+    if (Math.abs(data.x) > removeThreshold) {
+      setHasSwiped(true);
+    }
+  };
+
   return (
     <Draggable
-      bounds={{ right: 175, left: -175, top: -25, bottom: 20 }}
-      onDrag={(_, { deltaX }) => {
-        if (Math.abs(deltaX) > removeThreshold) {
-          handleSwipe(deltaX < 0 ? "left" : "right");
-        }
-      }}
+      bounds={{ right: 300, left: -300, top: -100, bottom: 100 }}
+      // onDrag={handleDrag}
       onStop={handleStop}
     >
-      <div className={`ml-6 mt-6 h-[700px] w-[500px] rounded-md bg-[#0f395a]`}>
+      <div
+        className={`h-[700px] w-[500px] rounded-md bg-[#0f395a]`}
+        style={{ opacity: 100 - 0.1 * offset }}
+      >
         <div
           className={`relative top-5 ml-5 mr-4 h-[84%] w-[93%] transform rounded-md border bg-white p-4 shadow-md`}
         >

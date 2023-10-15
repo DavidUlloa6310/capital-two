@@ -1,4 +1,4 @@
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent, useEffect, useRef } from "react";
 import Comment from "./Comment";
 import { Comment as TComment } from "@prisma/client";
 import { IoArrowRedoOutline } from "react-icons/io5";
@@ -21,10 +21,10 @@ const CommentSection = ({
   const [newComment, setNewComment] = useState("");
   const commentMutation = useCommentMutation();
   const [submissionLoading, setSubmissionLoading] = useState(false);
+  const commentWrapperRef = useRef<HTMLDivElement | null>(null);
 
   function submitComment(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
     setSubmissionLoading(true);
 
     if (!newComment) {
@@ -40,17 +40,27 @@ const CommentSection = ({
   }
 
   useEffect(() => {
-    console.log("comment added");
+    if (!commentWrapperRef.current) {
+      return;
+    }
+
+    commentWrapperRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [comments]);
 
   return (
     <div className="mr-8 mt-10 h-fit rounded border border-gray-300 p-4">
       <h3 className="mb-4 text-xl font-semibold">Comments</h3>
-      <div className="max-h-80 space-y-4 overflow-y-scroll">
+      <div
+        className="flex max-h-[22rem] w-full flex-col-reverse items-center justify-center space-y-4 overflow-y-scroll"
+        ref={(e) => (commentWrapperRef.current = e)}
+      >
         {comments.map(({ authorId, content }, index) => (
           <div
             key={index}
-            className="rounded bg-gray-100 p-3 hover:bg-gray-200"
+            className="w-full rounded bg-gray-100 p-3 hover:bg-gray-200"
           >
             <Comment authorId={authorId} content={content} />
           </div>

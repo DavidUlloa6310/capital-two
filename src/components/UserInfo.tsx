@@ -1,4 +1,6 @@
-import React from "react";
+import { BsCash } from "react-icons/bs";
+import { IconType } from "react-icons";
+import { ReactNode } from "react";
 
 interface UserInfoProp {
   title: string;
@@ -8,23 +10,48 @@ interface UserInfoProp {
   age: number;
 }
 
+interface DataProps {
+  data: ReactNode;
+  Icon: IconType;
+  color: string;
+}
+
+function Data({ data, Icon, color }: DataProps) {
+  return (
+    <div
+      className="items-cent flex justify-start gap-1"
+      style={{ backgroundColor: color }}
+    >
+      <span>
+        <Icon />
+      </span>
+      <h2 className="text-xl font-semibold first-letter:capitalize">{data}:</h2>
+    </div>
+  );
+}
+
 const UserInfo = ({ title, author, income, location, age }: UserInfoProp) => {
   return (
     <>
-      <h2 className="">
-        <span className="font-semibold">{title}</span>
-        <span className="text-sm"> {author}</span>
-      </h2>
+      <div>
+        <h3 className="text-sm">{author}</h3>
+        <h1 className="text-3xl font-semibold first-letter:capitalize">
+          {title}
+        </h1>
+      </div>
       <div className="mt-7">
-        <h3>
-          <span className="italic">Income:</span> {income}
-        </h3>
-        <h3>
-          <span className="italic">Location:</span> {location}
-        </h3>
-        <h3>
-          <span className="italic">Age:</span> {age}
-        </h3>
+        <Data Icon={BsCash} data={income} color="red" />
+        {/* {Object.entries(data).map(([key, value]) => (
+          <div
+            key={`${location}${age}${income}`}
+            className="flex items-end justify-start gap-1"
+          >
+            <h2 className="text-xl font-semibold first-letter:capitalize">
+              {key}:
+            </h2>
+            <h4 className="mb-[2px] text-sm font-light">{value}</h4>
+          </div>
+        ))} */}
       </div>
     </>
   );
