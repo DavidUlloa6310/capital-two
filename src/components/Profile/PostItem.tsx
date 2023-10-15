@@ -11,7 +11,7 @@ import { BsCash } from "react-icons/bs";
 
 dayjs.extend(relativeTime);
 
-function PostItem({ post }: { post: PostWithRelations }) {
+function PostItem({ post, key }: { post: PostWithRelations; key: number }) {
   const formattedDate = dayjs(post.createdAt).fromNow();
   const comments = post.comments;
   const [isExpanded, setIsExpanded] = useState(false);

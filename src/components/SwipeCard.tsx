@@ -8,6 +8,7 @@ interface SwipeCardProps {
   content: string;
   handleSwipe: (direction: 1 | -1) => void;
   zIndex: number;
+  hasNext: boolean;
 }
 
 const removeThreshold = 100;
@@ -49,6 +50,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
   content,
   handleSwipe,
   zIndex,
+  hasNext,
 }) => {
   const [springs, api] = useSpring(() => ({
     x: 0,
@@ -58,7 +60,8 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
   }));
 
   const bind = useDrag(({ down, movement: [mx, my], velocity, last }) => {
-    const overThreshold = Math.abs(mx) > removeThreshold || velocity[0] > 2;
+    const overThreshold =
+      (hasNext && Math.abs(mx) > removeThreshold) || velocity[0] > 2;
     //if over the threshold and mouse is up, then remove the card
 
     const rotation = mx / 25;

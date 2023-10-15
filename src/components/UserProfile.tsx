@@ -16,9 +16,12 @@ interface UserDataProps {
   onChange: (data: string) => void;
 }
 
-function UserData({ Icon, iconColor, name, value, onChange }: UserDataProps) {
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {}
+interface AuthorRouteType {
+  profile: UserData;
+  posts;
+}
 
+function UserData({ Icon, iconColor, name, value, onChange }: UserDataProps) {
   return (
     <div className="flex items-center justify-start">
       <Icon className={`mr-3 h-5 w-5 ${iconColor}`} />
@@ -67,16 +70,21 @@ const UserProfile = ({ user }: { user: UserData }) => {
   async function saveUserData() {
     const request = await fetch(`/api/author/${user.profile.email}/`, {
       method: "POST",
-      body: JSON.stringify({ income: parseInt(income || ""), age, location }),
+      body: JSON.stringify({ income: parseInt(income ?? ""), age, location }),
     });
 
-    const response = await request.json();
-    console.log(response);
+    const response: UserData = await request.json();
+
+    setIncome(response.income);
+    setAge(response.age);
+    setLocation(response.location);
+
+    setModified(false);
   }
 
   return (
     <div className="h-[21.5rem] w-[42%] rounded-lg border border-gray-200 bg-mainGray bg-opacity-5 p-6 transition-all hover:bg-opacity-10 hover:shadow">
-      <div className="flex items-center justify-between gap-10 space-x-4">
+      <div className="flex items-center justify-between gap-5">
         <div>
           <h2 className="mb-6 text-3xl font-bold">
             {getUserNickname(user.profile.name)}
@@ -98,7 +106,7 @@ const UserProfile = ({ user }: { user: UserData }) => {
               iconColor="text-blue-700"
               Icon={BiCake}
               onChange={(yearsOld) => {
-                if (!parseInt(yearsOld)) return;
+                if (yearsOld !== "" && !parseInt(yearsOld)) return;
 
                 setModified(true);
                 setAge(+yearsOld);
@@ -121,8 +129,8 @@ const UserProfile = ({ user }: { user: UserData }) => {
             width={200}
             height={200}
             src={profilePicture}
-            alt={getUserNickname(user.profile.name) || ""}
-            className="mx-auto h-[45%] w-[45%] rounded-full border border-black transition-all hover:shadow-md"
+            alt={getUserNickname(user.profile.name) ?? ""}
+            className=" h-[45%] w-[45%] rounded-full border border-black transition-all hover:shadow-md"
           />
         )}
       </div>

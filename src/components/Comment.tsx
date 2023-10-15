@@ -31,12 +31,12 @@ const Comment = ({ name, income, age, content }: CommentProps) => {
         <RxDividerVertical className="mx-2 text-xl text-mainGray" />
 
         <Metadata
-          data={income?.toLocaleString("en-US") || "Hidden"}
+          data={income?.toLocaleString("en-US") ?? "Hidden"}
           Icon={MdOutlineAttachMoney}
         />
         <RxDividerVertical className="mx-2 text-xl text-mainGray" />
 
-        <Metadata data={`${age || "Unknown"} years old`} Icon={BiCake} />
+        <Metadata data={`${age ?? "Unknown"} years old`} Icon={BiCake} />
       </div>
     </div>
   );

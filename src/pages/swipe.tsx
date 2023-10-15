@@ -55,6 +55,7 @@ const Swipe = () => {
                     content={card.data.content}
                     author={getUserNickname(card.data.author.name) as string}
                     handleSwipe={performSwipe}
+                    hasNext={nextPost != null}
                   />
                 ),
             )}

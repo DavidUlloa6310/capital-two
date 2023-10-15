@@ -59,7 +59,7 @@ export default async function handler(
         },
       });
 
-      return updateAuthor;
+      return res.status(200).json(updateAuthor);
     default:
       return res.status(405).end();
   }

@@ -27,8 +27,10 @@ export const useFeed = () => {
   } = useInfiniteQuery<PostWithRelations[], Error>({
     queryKey: ["feed"],
     queryFn: fetchFeed,
-    getNextPageParam: (lastPage, pages) =>
-      lastPage ? lastPage[lastPage.length - 1]?.id : null,
+    getNextPageParam: (lastPage, pages) => {
+      console.log("lastPage", lastPage, "pages", pages);
+      return lastPage ? lastPage[lastPage.length - 1]?.id : null;
+    },
   });
 
   const voteMutation = useVoteMutation();
