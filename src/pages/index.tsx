@@ -1,5 +1,6 @@
 import RegisterForm from "@/components/Form/RegisterForm";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -16,9 +17,11 @@ export default function Home() {
           It&rsquo;s hard to solve personal finance, when no one is willing to
           talk about it...
         </h2>
-        <button className="bg-capital_red my-4 rounded-md px-4 py-2 text-white transition-all hover:scale-125">
-          Join Anonmyously
-        </button>
+        <Link href="/api/auth/signin">
+          <button className="bg-capital_red my-4 rounded-md px-4 py-2 text-white transition-all hover:scale-125">
+            Join Anonmyously
+          </button>
+        </Link>
         {/* <RegisterForm className=" mx-10 w-[400px] self-center" /> */}
       </div>
     </main>

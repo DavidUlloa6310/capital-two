@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getPosts, createPost } from "@/util/posts";
+import { createPost } from "@/util/posts";
 import { createPostSchema } from "@/schemas/createPost";
 import z from "zod";
 

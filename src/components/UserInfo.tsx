@@ -21,7 +21,7 @@ interface DataProps {
 function Data({ data, Icon, className }: DataProps) {
   return (
     <div
-      className={`tex-sm flex w-fit items-center justify-start gap-2 rounded-lg px-3 py-1 text-white ${className}`}
+      className={`tex-sm flex w-fit items-center justify-start gap-2 rounded-lg px-3 py-1 text-white hover:shadow-md ${className}`}
     >
       <Icon />
       <h2 className="text-sm font-light first-letter:capitalize">{data}</h2>

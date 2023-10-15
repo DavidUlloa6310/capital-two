@@ -40,6 +40,7 @@ const CommentSection = ({
     setNewComment("");
   }
 
+  // scroll to the top if you add a new comment
   useEffect(() => {
     if (!commentWrapperRef.current) {
       return;
@@ -55,13 +56,13 @@ const CommentSection = ({
     <div className="mr-8 mt-10 h-fit rounded border border-gray-300 p-4">
       <h3 className="mb-4 text-xl font-semibold">Comments</h3>
       <div
-        className="flex h-[24rem] w-full flex-col-reverse items-center justify-center space-y-4 overflow-y-scroll"
+        className="flex h-[24rem] flex-col-reverse gap-3 overflow-y-scroll"
         ref={(e) => (commentWrapperRef.current = e)}
       >
         {comments.map(({ authorId, content }, index) => (
           <div
             key={index}
-            className="w-full rounded bg-gray-100 p-3 hover:bg-gray-200"
+            className="w-full rounded-lg bg-gray-100 p-3 hover:bg-gray-200 hover:shadow-md"
           >
             <Comment authorId={authorId} content={content} />
           </div>
@@ -84,7 +85,7 @@ const CommentSection = ({
           <IoArrowRedoOutline />
         </button>
       </form>
-      <span>
+      <span className="text-mainGray mt-2 flex items-center justify-start gap-1 text-base">
         <GoCommentDiscussion />
         <p>{comments.length}</p>
       </span>
