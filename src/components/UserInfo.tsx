@@ -1,4 +1,6 @@
+import { BiCake } from "react-icons/bi";
 import { BsCash } from "react-icons/bs";
+import { CiLocationOn } from "react-icons/ci";
 import { IconType } from "react-icons";
 import { ReactNode } from "react";
 
@@ -13,19 +15,16 @@ interface UserInfoProp {
 interface DataProps {
   data: ReactNode;
   Icon: IconType;
-  color: string;
+  className: HTMLDivElement["className"];
 }
 
-function Data({ data, Icon, color }: DataProps) {
+function Data({ data, Icon, className }: DataProps) {
   return (
     <div
-      className="items-cent flex justify-start gap-1"
-      style={{ backgroundColor: color }}
+      className={`tex-sm flex w-fit items-center justify-start gap-2 rounded-lg px-3 py-1 text-white ${className}`}
     >
-      <span>
-        <Icon />
-      </span>
-      <h2 className="text-xl font-semibold first-letter:capitalize">{data}:</h2>
+      <Icon />
+      <h2 className="text-sm font-light first-letter:capitalize">{data}</h2>
     </div>
   );
 }
@@ -39,19 +38,18 @@ const UserInfo = ({ title, author, income, location, age }: UserInfoProp) => {
           {title}
         </h1>
       </div>
-      <div className="mt-7">
-        <Data Icon={BsCash} data={income} color="red" />
-        {/* {Object.entries(data).map(([key, value]) => (
-          <div
-            key={`${location}${age}${income}`}
-            className="flex items-end justify-start gap-1"
-          >
-            <h2 className="text-xl font-semibold first-letter:capitalize">
-              {key}:
-            </h2>
-            <h4 className="mb-[2px] text-sm font-light">{value}</h4>
-          </div>
-        ))} */}
+      <div className="mt-7 flex items-center justify-start gap-4">
+        <Data
+          Icon={BsCash}
+          data={income}
+          className="bg-green-500  bg-opacity-80"
+        />
+        <Data
+          Icon={CiLocationOn}
+          data={location}
+          className="bg-orange-400  bg-opacity-80"
+        />
+        <Data Icon={BiCake} data={age} className="bg-blue-400  bg-opacity-80" />
       </div>
     </>
   );

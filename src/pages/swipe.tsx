@@ -2,6 +2,7 @@ import SwipeCard from "@/components/SwipeCard";
 import Navbar from "@/components/Navbar";
 import CommentSection from "@/components/CommentSection";
 import UserInfo from "@/components/UserInfo";
+import Link from "next/link";
 import { useFeed } from "@/hooks/useFeed";
 import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -55,7 +56,14 @@ const Swipe = () => {
   if (session == null) {
     return (
       <main className="flex min-h-screen w-screen flex-col items-center justify-center">
-        <h2>Make sure to login to view other's posts</h2>
+        <h2 className="text-capital_blue textl-4xl">
+          Make sure to login to view other's posts.
+        </h2>
+        <button>
+          <Link href="/api/auth/signin">
+            <button>Log In</button>
+          </Link>
+        </button>
       </main>
     );
   }
@@ -72,28 +80,14 @@ const Swipe = () => {
             ].map(
               (card, index) =>
                 card.data && (
-                  <div
-                    key={`${card.data.id}, ${index}`}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-
-                      zIndex: card.zIndex,
-                      animation: hasSwipedRight
-                        ? "fadeOutAndFallRight 0.4s linear"
-                        : hasSwipedLeft
-                        ? "fadeOutAndFallLeft 0.4s linear"
-                        : "none",
-                    }}
-                  >
-                    <SwipeCard
-                      content={card.data.content}
-                      author={card.data.author.first_name}
-                      onSwipeLeft={handleSwipeLeft}
-                      onSwipeRight={handleSwipeRight}
-                    />
-                  </div>
+                  <SwipeCard
+                    key={index}
+                    zIndex={card.zIndex}
+                    content={card.data.content}
+                    author={card.data.author.first_name}
+                    onSwipeLeft={handleSwipeLeft}
+                    onSwipeRight={handleSwipeRight}
+                  />
                 ),
             )}
           </div>
