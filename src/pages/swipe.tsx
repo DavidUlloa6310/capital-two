@@ -41,7 +41,7 @@ const Swipe = () => {
   return (
     <main>
       <Navbar />
-      <div className="grid grid-cols-9 gap-8 p-5">
+      <div className="mt-10 grid grid-cols-9 gap-8 p-5">
         <div className="align-center col-span-4 flex items-center justify-center">
           <div className="relative h-[700px] w-[500px]">
             {[
