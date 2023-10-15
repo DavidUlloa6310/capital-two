@@ -24,7 +24,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="h-full w-[42%] rounded-md border bg-white p-4">
+    <div className="h-full w-[50%] rounded-md border-2 border-gray-200 bg-white p-4">
       <h2 className="mb-4 text-xl font-semibold">Create a New Post</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -62,7 +62,7 @@ const CreatePost = () => {
           />
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-start">
           <button
             disabled={createPostMutation.isLoading}
             type="submit"

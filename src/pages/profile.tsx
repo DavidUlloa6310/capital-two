@@ -11,66 +11,59 @@ import { type User } from "@prisma/client";
 import { type Post } from "@prisma/client";
 import { GetServerSideProps } from "next";
 import PostDetails from "@/components/Profile/PostDetails";
+import { useUserData } from "@/hooks/useUserData";
 
 export default function Profile() {
-  const [userData, setUserData] = useState<User>();
-  const [postData, setPostData] = useState<Post>();
   const session = useSession();
 
+  const { data, isLoading, error } = useUserData({
+    email: session?.data?.user?.email,
+    isEnabled: true,
+  });
+
   useEffect(() => {
-    async function getData() {
-      const userResponse = await fetch(
-        `/api/author/${session?.data?.user?.email}`,
-      );
-      if (!userResponse.ok) {
-        throw new Error("Could not fetch user's data");
-      }
-      const userJSON: User = await userResponse.json();
-      setUserData(userJSON);
+    console.log(data);
+  }, [data]);
 
-      const postResponse = await fetch(`/api/posts/${userData?.email}`);
-      if (!postResponse.ok) {
-        throw new Error("Could not fetch user's data");
-      }
-      const postJSON = await postResponse.json();
-      setPostData(postJSON);
-      console.log(postData);
-    }
-    void getData();
-  }, [session]);
+  const dummyData = [
+    {
+      post: {
+        content:
+          "“Just invested 80% of my paycheck into a local artisanal avocado toast subscription service 🥑🍞, because who needs a savings account when you've got gourmet breakfast for days? 🤷🏻‍♂️ Now seeking advice on how to explain to my landlord that avocados are the new gold 🥇🏠. #SanFrancisco #MillennialProblems #SendHelpAndRentMoney”",
+        createdAt: "11/22/63",
+      },
+      averageAge: "40",
+      averageIncome: "10,000",
+    },
+  ];
 
-  if (session == null) {
+  if (session == null || !session.data?.user?.email) {
     return <SigninWarning />;
   }
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>An error has occurred: {error.message}</div>;
 
   return (
     <>
       <Navbar />
-      <main className="flex flex-col items-center justify-center">
-        <div className="mb-12 mt-12 flex w-full flex-row justify-evenly">
+      <main className="flex h-[40%] w-full flex-col items-center justify-center">
+        <div className="mb-12 mt-12 flex h-[50%] w-full flex-row justify-evenly ">
           <CreatePost />
           <UserProfile />
         </div>
-        <PostDetails
-          post={{
-            content:
-              "“Just invested 80% of my paycheck into a local artisanal avocado toast subscription service 🥑🍞, because who needs a savings account when you've got gourmet breakfast for days? 🤷🏻‍♂️ Now seeking advice on how to explain to my landlord that avocados are the new gold 🥇🏠. #SanFrancisco #MillennialProblems #SendHelpAndRentMoney”",
-            createdAt: "11/24/23",
-          }}
-          averageAge="50"
-          averageIncome="20"
-        />
+        <PostDetails posts={dummyData} />
       </main>
     </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const session = await getServerSession(req, res, authOptions);
-  console.log(session);
-  return {
-    props: {
-      s: session,
-    },
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+//   const session = await getServerSession(req, res, authOptions);
+//   console.log(session);
+//   return {
+//     props: {
+//       s: session,
+//     },
+//   };
+// };

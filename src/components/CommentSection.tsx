@@ -4,20 +4,18 @@ import { Comment as TComment } from "@prisma/client";
 import { IoArrowRedoOutline } from "react-icons/io5";
 import { GoCommentDiscussion } from "react-icons/go";
 import { useCommentMutation } from "@/hooks/useCommentMutation";
+import { type User } from "@prisma/client";
 
 interface CommentSectionProps {
-  author: {
-    name: string;
-  };
-  comments: TComment[];
+  comments: Array<
+    TComment & {
+      author: User;
+    }
+  >;
   id: number;
 }
 
-const CommentSection = ({
-  id: postId,
-  author,
-  comments,
-}: CommentSectionProps) => {
+const CommentSection = ({ id: postId, comments }: CommentSectionProps) => {
   const [newComment, setNewComment] = useState("");
   const commentMutation = useCommentMutation();
   const [submissionLoading, setSubmissionLoading] = useState(false);
@@ -58,12 +56,12 @@ const CommentSection = ({
         className="flex h-[24rem] flex-col-reverse gap-3 overflow-y-scroll"
         ref={(e) => (commentWrapperRef.current = e)}
       >
-        {comments.map(({ authorId, content }, index) => (
+        {comments.map(({ author, content }, index) => (
           <div
             key={index}
             className="w-full rounded-lg bg-gray-100 p-3 hover:bg-gray-200 hover:shadow-md"
           >
-            <Comment authorId={authorId} content={content} />
+            <Comment {...author} content={content} />
           </div>
         ))}
       </div>

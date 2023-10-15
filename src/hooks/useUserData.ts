@@ -6,6 +6,18 @@ const fetchData = async (email: string) => {
   return data.json();
 };
 
-export const useUserData = (email: string) => {
-  return useQuery<UserData>(["userData", email], () => fetchData(email));
+export const useUserData = ({
+  email,
+  isEnabled,
+}: {
+  email: string | null | undefined;
+  isEnabled: boolean;
+}) => {
+  return useQuery<UserData, Error>(
+    ["userData", email],
+    () => fetchData(email!),
+    {
+      enabled: isEnabled && !!email,
+    },
+  );
 };
