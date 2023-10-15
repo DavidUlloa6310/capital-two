@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { createPost } from "@/util/posts";
 
-export default async function getPostsHandler(
+export default function getPostsHandler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {

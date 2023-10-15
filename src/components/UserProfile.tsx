@@ -70,9 +70,9 @@ const UserProfile = ({ user }: { user: UserData }) => {
 
     const response: UserData = await request.json();
 
-    setIncome(response.income);
-    setAge(response.age);
-    setLocation(response.location);
+    setIncome(String(response.profile.income));
+    setAge(response.profile.age);
+    setLocation(response.profile.location);
 
     setModified(false);
   }

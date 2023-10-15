@@ -20,9 +20,9 @@ interface CommentProps extends Pick<User, "name" | "income" | "age"> {
 
 function Metadata({ data, Icon }: { data: ReactNode; Icon: IconType }) {
   return (
-    <span className="flex items-center justify-center">
+    <span className="relative right-2 flex items-center justify-center">
       <Icon className="mr-1 w-6 text-mainGray" />
-      <p className="text-mainGray">{data}</p>
+      <p className="-ml-2 text-mainGray">{data}</p>
     </span>
   );
 }

@@ -11,7 +11,7 @@ interface SwipeCardProps {
   hasNext: boolean;
 }
 
-const removeThreshold = 100;
+const removeThreshold = 300;
 
 const calculateColor = (mx: number) => {
   // Determine the percentage of swipe progress
@@ -57,6 +57,10 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
     y: 0,
     rotate: 0,
     opacity: 1,
+    config: {
+      tension: 500,
+      friction: 30,
+    },
   }));
 
   const bind = useDrag(({ down, movement: [mx, my], velocity, last }) => {

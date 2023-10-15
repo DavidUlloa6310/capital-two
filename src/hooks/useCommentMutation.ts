@@ -6,7 +6,7 @@ import type {
 import type { Comment } from "@prisma/client";
 import { useSession } from "next-auth/react";
 
-type AddComment = Pick<Comment, "id" | "content" | "postId">;
+type AddComment = Pick<Comment, "content" | "postId">;
 
 const addComment = ({ content, postId }: AddComment) => {
   return fetch(`/api/posts/${postId}/comment`, {
@@ -26,7 +26,7 @@ export const useCommentMutation = () => {
     onMutate: async (data) => {
       const newComment: CommentWithAuthor = {
         ...data,
-        id: Math.floor(Math.random() * 1000),
+        id: 123,
         createdAt: new Date(),
         updatedAt: new Date(),
         authorId: 1,

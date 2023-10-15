@@ -2,7 +2,7 @@ import { Session } from "next-auth";
 import { db } from "@/server/db";
 
 export const getUserId = async (session: Session | null) => {
-  if (!session || !session.user?.email) {
+  if (!session || !session?.user?.email) {
     throw new Error("User not authenticated");
   }
 
