@@ -39,7 +39,7 @@ export const getPosts = async (
       },
     },
     orderBy: {
-      createdAt: "desc",
+      id: "asc",
     },
     take: limit,
   });

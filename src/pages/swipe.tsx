@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import SigninWarning from "@/components/SigninWarning";
 import { getUserNickname } from "@/util/nicknames";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const Swipe = () => {
   const {
@@ -30,7 +31,7 @@ const Swipe = () => {
     console.log("Changed previous post", previousPost);
   }, [currentPost]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
   if (error) return <div>An error has occurred: {error.message}</div>;
 
   if (session == null) {
