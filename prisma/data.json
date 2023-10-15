@@ -1,0 +1,689 @@
+{
+    "users": [
+      {
+         "email":"anna.miller@example.com",
+         "name":"Anna Miller",
+         "age":40,
+         "income":80000,
+         "credit_score":750
+      },
+      {
+         "email":"bob.jones@example.com",
+         "name":"Bob Jones",
+         "age":35,
+         "income":65000,
+         "credit_score":680
+      },
+      {
+         "email":"catherine.green@example.com",
+         "name":"Catherine Green",
+         "age":27,
+         "income":55000,
+         "credit_score":660
+      },
+      {
+         "email":"david.lopez@example.com",
+         "name":"David Lopez",
+         "age":29,
+         "income":47000,
+         "credit_score":590
+      },
+      {
+         "email":"emma.white@example.com",
+         "name":"Emma White",
+         "age":24,
+         "income":42000,
+         "credit_score":640
+      },
+      {
+         "email":"frank.gray@example.com",
+         "name":"Frank Gray",
+         "age":36,
+         "income":72000,
+         "credit_score":710
+      },
+      {
+         "email":"george.black@example.com",
+         "name":"George Black",
+         "age":45,
+         "income":92000,
+         "credit_score":760
+      },
+      {
+         "email":"hannah.kim@example.com",
+         "name":"Hannah Kim",
+         "age":32,
+         "income":51000,
+         "credit_score":625
+      },
+      {
+         "email":"ivan.patel@example.com",
+         "name":"Ivan Patel",
+         "age":21,
+         "income":33000,
+         "credit_score":605
+      },
+      {
+         "email":"jack.davis@example.com",
+         "name":"Jack Davis",
+         "age":39,
+         "income":75000,
+         "credit_score":700
+      },
+      {
+         "email":"karen.lee@example.com",
+         "name":"Karen Lee",
+         "age":50,
+         "income":95000,
+         "credit_score":780
+      },
+      {
+         "email":"lucy.clark@example.com",
+         "name":"Lucy Clark",
+         "age":22,
+         "income":36000,
+         "credit_score":620
+      },
+      {
+         "email":"mike.hall@example.com",
+         "name":"Mike Hall",
+         "age":28,
+         "income":47000,
+         "credit_score":580
+      },
+      {
+         "email":"nina.foster@example.com",
+         "name":"Nina Foster",
+         "age":31,
+         "income":63000,
+         "credit_score":645
+      },
+      {
+         "email":"oscar.garcia@example.com",
+         "name":"Oscar Garcia",
+         "age":34,
+         "income":68000,
+         "credit_score":730
+      },
+      {
+         "email":"paula.taylor@example.com",
+         "name":"Paula Taylor",
+         "age":26,
+         "income":41000,
+         "credit_score":615
+      },
+      {
+         "email":"quincy.wilson@example.com",
+         "name":"Quincy Wilson",
+         "age":37,
+         "income":71000,
+         "credit_score":690
+      },
+      {
+         "email":"rachel.brown@example.com",
+         "name":"Rachel Brown",
+         "age":43,
+         "income":84000,
+         "credit_score":765
+      },
+      {
+         "email":"steve.cook@example.com",
+         "name":"Steve Cook",
+         "age":23,
+         "income":32000,
+         "credit_score":600
+      },
+      {
+         "email":"tina.martin@example.com",
+         "name":"Tina Martin",
+         "age":38,
+         "income":61000,
+         "credit_score":660
+      },
+      {
+         "email":"uma.jones@example.com",
+         "name":"Uma Jones",
+         "age":25,
+         "income":45000,
+         "credit_score":640
+      },
+      {
+         "email":"victor.murphy@example.com",
+         "name":"Victor Murphy",
+         "age":41,
+         "income":67000,
+         "credit_score":710
+      },
+      {
+         "email":"wendy.lewis@example.com",
+         "name":"Wendy Lewis",
+         "age":47,
+         "income":91000,
+         "credit_score":770
+      },
+      {
+         "email":"xavier.gonzalez@example.com",
+         "name":"Xavier Gonzalez",
+         "age":48,
+         "income":86000,
+         "credit_score":735
+      },
+      {
+         "email":"yasmine.wood@example.com",
+         "name":"Yasmine Wood",
+         "age":33,
+         "income":52000,
+         "credit_score":650
+      },
+      {
+         "email":"zachary.young@example.com",
+         "name":"Zachary Young",
+         "age":29,
+         "income":48000,
+         "credit_score":645
+      },
+      {
+         "email":"andrew.morgan@example.com",
+         "name":"Andrew Morgan",
+         "age":30,
+         "income":56000,
+         "credit_score":685
+      },
+      {
+         "email":"britney.fox@example.com",
+         "name":"Britney Fox",
+         "age":20,
+         "income":29000,
+         "credit_score":590
+      },
+      {
+         "email":"charles.kim@example.com",
+         "name":"Charles Kim",
+         "age":40,
+         "income":90000,
+         "credit_score":760
+      },
+      {
+         "email":"diane.owen@example.com",
+         "name":"Diane Owen",
+         "age":27,
+         "income":54000,
+         "credit_score":625
+      },
+      {
+         "email":"edward.singh@example.com",
+         "name":"Edward Singh",
+         "age":32,
+         "income":50000,
+         "credit_score":620
+      },
+      {
+         "email":"fiona.wright@example.com",
+         "name":"Fiona Wright",
+         "age":33,
+         "income":53000,
+         "credit_score":630
+      },
+      {
+         "email":"gary.hill@example.com",
+         "name":"Gary Hill",
+         "age":44,
+         "income":88000,
+         "credit_score":745
+      },
+      {
+         "email":"harry.nelson@example.com",
+         "name":"Harry Nelson",
+         "age":46,
+         "income":93000,
+         "credit_score":780
+      },
+      {
+         "email":"irene.parker@example.com",
+         "name":"Irene Parker",
+         "age":52,
+         "income":100000,
+         "credit_score":790
+      },
+      {
+         "email":"judy.ford@example.com",
+         "name":"Judy Ford",
+         "age":29,
+         "income":46000,
+         "credit_score":610
+      },
+      {
+         "email":"kevin.gray@example.com",
+         "name":"Kevin Gray",
+         "age":42,
+         "income":73000,
+         "credit_score":725
+      },
+      {
+         "email":"linda.scott@example.com",
+         "name":"Linda Scott",
+         "age":55,
+         "income":97000,
+         "credit_score":755
+      },
+      {
+         "email":"monica.evans@example.com",
+         "name":"Monica Evans",
+         "age":28,
+         "income":48000,
+         "credit_score":625
+      },
+      {
+         "email":"nick.smith@example.com",
+         "name":"Nick Smith",
+         "age":31,
+         "income":62000,
+         "credit_score":695
+      },
+      {
+         "email":"olivia.baker@example.com",
+         "name":"Olivia Baker",
+         "age":34,
+         "income":69000,
+         "credit_score":720
+      },
+      {
+         "email":"peter.adams@example.com",
+         "name":"Peter Adams",
+         "age":36,
+         "income":77000,
+         "credit_score":730
+      },
+      {
+         "email":"quinn.anderson@example.com",
+         "name":"Quinn Anderson",
+         "age":45,
+         "income":89000,
+         "credit_score":750
+      },
+      {
+         "email":"ryan.carter@example.com",
+         "name":"Ryan Carter",
+         "age":47,
+         "income":94000,
+         "credit_score":765
+      },
+      {
+         "email":"sarah.james@example.com",
+         "name":"Sarah James",
+         "age":25,
+         "income":44000,
+         "credit_score":635
+      },
+      {
+         "email":"tim.reed@example.com",
+         "name":"Tim Reed",
+         "age":43,
+         "income":83000,
+         "credit_score":740
+      },
+      {
+         "email":"ursula.rogers@example.com",
+         "name":"Ursula Rogers",
+         "age":26,
+         "income":49000,
+         "credit_score":620
+      },
+      {
+         "email":"vivian.bell@example.com",
+         "name":"Vivian Bell",
+         "age":30,
+         "income":59000,
+         "credit_score":680
+      },
+      {
+         "email":"walter.hughes@example.com",
+         "name":"Walter Hughes",
+         "age":38,
+         "income":74000,
+         "credit_score":725
+      },
+      {
+         "email":"xena.ward@example.com",
+         "name":"Xena Ward",
+         "age":39,
+         "income":78000,
+         "credit_score":735
+      }
+   ],
+    "posts": [
+      {
+        "content": "Just paid off my student loan! Feeling free!",
+        "title": "Debt-Free at Last",
+        "authorId": 1
+      },
+      {
+        "content": "My credit score dropped out of nowhere. Any clues?",
+        "title": "Credit Score Mystery",
+        "authorId": 1
+      },
+      {
+        "content": "Saved up an emergency fund in just one year. It was tough but so rewarding.",
+        "title": "Financial Security",
+        "authorId": 2
+      },
+      {
+        "content": "Unexpected medical bill wiped out my savings. What do I do now?",
+        "title": "Financial Hit",
+        "authorId": 2
+      },
+      {
+        "content": "Started investing in stocks. Let's see how it goes!",
+        "title": "Into the Stock Market",
+        "authorId": 3
+      },
+      {
+        "content": "Why are rent prices so high? It's getting impossible to save.",
+        "title": "Rent Frustration",
+        "authorId": 3
+      },
+      {
+        "content": "Got a huge tax refund this year! Where should I put the money?",
+        "title": "Tax Refund Choices",
+        "authorId": 4
+      },
+      {
+        "content": "Credit card debt is killing me. Need help to get out of it.",
+        "title": "Drowning in Debt",
+        "authorId": 4
+      },
+      {
+        "content": "Just paid off my student loan! Feeling free!",
+        "title": "Debt-Free at Last",
+        "authorId": 17
+      },
+      {
+        "content": "Invested in some blue-chip stocks today. Feeling optimistic.",
+        "title": "Stock Investment",
+        "authorId": 23
+      },
+      {
+        "content": "After much thought, I decided to refinance my mortgage. Got a lower interest rate and feeling good about it.",
+        "title": "Mortgage Refinance",
+        "authorId": 8
+      },
+      {
+        "content": "I finally set up a retirement account. Better late than never.",
+        "title": "Securing My Future",
+        "authorId": 36
+      },
+      {
+        "content": "Decided to refinance my mortgage to take advantage of low interest rates. I'm saving $200 a month now!",
+        "title": "Mortgage Win",
+        "authorId": 3
+      },
+      {
+        "content": "Took a risk on some penny stocks and lost a bit of money. Not doing that again.",
+        "title": "Investment Fail",
+        "authorId": 12
+      },
+      {
+        "content": "Just checked my credit report and found an error. Make sure to check yours!",
+        "title": "Credit Alert",
+        "authorId": 28
+      },
+      {
+        "content": "Missed a credit card payment and my score dropped. Feeling defeated.",
+        "title": "Payment Slip",
+        "authorId": 48
+      },
+      {
+        "content": "Bought an extended warranty for my car and it turned out to be a wise decision. Already saved me $600 in repairs.",
+        "title": "Warranty Wisdom",
+        "authorId": 15
+      },
+      {
+        "content": "After months of hard work, I've finally paid off my credit card debt. Never felt so free.",
+        "title": "Debt-Free Milestone",
+        "authorId": 10
+      },
+      {
+        "content": "Got scammed while trying to buy a second-hand phone online. Be careful, folks!",
+        "title": "Scam Alert",
+        "authorId": 22
+      },
+      {
+        "content": "I subscribed to a food delivery service. It's convenient but affecting my budget negatively.",
+        "title": "Convenience Costs",
+        "authorId": 33
+      },
+      {
+        "content": "Just completed a course on personal finance. Feeling empowered to take control of my finances!",
+        "title": "Knowledge is Power",
+        "authorId": 43
+      },
+      {
+        "content": "My car broke down and I had no emergency fund. Had to borrow money from family. It's time to start saving.",
+        "title": "Emergency Fund Needed",
+        "authorId": 50
+      },
+      {
+        "content": "Successfully saved 10% of my income this month. Small steps can make a big difference.",
+        "title": "Small Steps",
+        "authorId": 27
+      },
+      {
+        "content": "Had to pay a huge fine for missing the tax deadline. Don't make the same mistake.",
+        "title": "Tax Troubles",
+        "authorId": 2
+      },
+      {
+        "content": "Considering downsizing my home to save money. Less space, more financial freedom?",
+        "title": "Downsizing Dilemma",
+        "authorId": 36
+      },
+      {
+        "content": "Invested in some artwork. Besides the aesthetic value, it's a decent investment too.",
+        "title": "Art as Investment",
+        "authorId": 4
+      },
+      {
+        "content": "Started a side hustle last month. It's been challenging but it's bringing in extra income.",
+        "title": "Side Hustle",
+        "authorId": 29
+      },
+      {
+        "content": "Just filed my taxes by myself for the first time. It was easier than I thought!",
+        "title": "Tax Filing Accomplished",
+        "authorId": 11
+      },
+      {
+        "content": "Took out a payday loan and now I'm stuck in a cycle. Looking for a way out.",
+        "title": "Payday Loan Pitfall",
+        "authorId": 5
+      },
+      {
+        "content": "I've been contributing to my company's 401(k) but I'm not sure if it's the best option. Should I consider an IRA?",
+        "title": "Retirement Planning",
+        "authorId": 8
+      },
+      {
+        "content": "I bought an electric scooter and it's saving me so much in commuting costs!",
+        "title": "Eco-Friendly Savings",
+        "authorId": 13
+      },
+      {
+        "content": "Just got hit with an overdraft fee. My own fault, but it stings.",
+        "title": "Banking Blunder",
+        "authorId": 9
+      },
+      {
+        "content": "Took my car in for a simple repair, got hit with a huge bill for additional issues. Always get a second opinion!",
+        "title": "Mechanic Mayhem",
+        "authorId": 38
+      },
+      {
+        "content": "Started using a cash-back credit card for my daily expenses. Those rewards really add up!",
+        "title": "Cash-Back Benefits",
+        "authorId": 7
+      },
+      {
+        "content": "I've been thinking about buying a house, but the market is so inflated right now. Is it worth the investment?",
+        "title": "Home Buying Jitters",
+        "authorId": 46
+      },
+      {
+        "content": "Just realized that eating out has been draining my wallet. Time to start cooking at home more.",
+        "title": "Dining Out Dilemma",
+        "authorId": 25
+      },
+      {
+        "content": "Was feeling down and went on a shopping spree. Instant regret.",
+        "title": "Retail Regret",
+        "authorId": 19
+      },
+      {
+        "content": "Switched to a high-interest savings account. Why didn't I do this sooner?",
+        "title": "Better Savings",
+        "authorId": 35
+      },
+      {
+        "content": "Got a speeding ticket that set me back $150. Don't speed, folks!",
+        "title": "Speeding Costs",
+        "authorId": 42
+      },
+      {
+        "content": "I've been freelancing for a few months, but managing taxes is a headache.",
+        "title": "Freelance Frustrations",
+        "authorId": 1
+      },
+      {
+        "content": "Sold some old stuff on eBay. Decluttered my home and made some money.",
+        "title": "Declutter and Profit",
+        "authorId": 17
+      },
+      {
+        "content": "Thinking about getting a pet, but the costs are making me hesitate. Any advice?",
+        "title": "Pet Planning",
+        "authorId": 31
+      }
+    ],
+    "comments": [
+      {
+        "authorId": 1,
+        "postId": 1,
+        "content": "Congratulations!"
+      },
+      {
+        "authorId": 1,
+        "postId": 1,
+        "content": "How did you manage it?"
+      },
+      {
+        "authorId": 1,
+        "postId": 1,
+        "content": "Lucky you. Still drowning in mine."
+      },
+      {
+        "authorId": 1,
+        "postId": 2,
+        "content": "Check for errors in your report."
+      },
+      {
+        "authorId": 1,
+        "postId": 2,
+        "content": "This happened to me once, it's scary!"
+      },
+      {
+        "authorId": 1,
+        "postId": 2,
+        "content": "Did you cancel a credit card recently?"
+      },
+      {
+        "authorId": 1,
+        "postId": 1,
+        "content": "That's impressive!"
+      },
+      {
+        "authorId": 1,
+        "postId": 1,
+        "content": "How much did you save?"
+      },
+      {
+        "authorId": 1,
+        "postId": 1,
+        "content": "A year? I'm still working on mine."
+      },
+      {
+        "authorId": 1,
+        "postId": 2,
+        "content": "That's really tough."
+      },
+      {
+        "authorId": 1,
+        "postId": 2,
+        "content": "Can you set up a payment plan?"
+      },
+      {
+        "authorId": 1,
+        "postId": 2,
+        "content": "Health is more important than money."
+      },
+      {
+        "authorId": 2,
+        "postId": 1,
+        "content": "That's a smart move!"
+      },
+      {
+        "authorId": 1,
+        "postId": 1,
+        "content": "Be careful, it's risky."
+      },
+      {
+        "authorId": 1,
+        "postId": 1,
+        "content": "Which stocks are you considering?"
+      },
+      {
+        "authorId": 1,
+        "postId": 2,
+        "content": "Tell me about it!"
+      },
+      {
+        "authorId": 2,
+        "postId": 2,
+        "content": "Have you looked into getting roommates?"
+      },
+      {
+        "authorId": 2,
+        "postId": 2,
+        "content": "It's a landlord's market, unfortunately."
+      },
+      {
+        "authorId": 3,
+        "postId": 1,
+        "content": "Maybe invest it?"
+      },
+      {
+        "authorId": 2,
+        "postId": 1,
+        "content": "You should treat yourself!"
+      },
+      {
+        "authorId": 3,
+        "postId": 1,
+        "content": "Save it for a rainyday."
+      },
+      {
+        "authorId": 3,
+        "postId": 2,
+        "content": "Consider a balance transfer."
+      },
+      {
+        "authorId": 3,
+        "postId": 2,
+        "content": "I feel your pain, I'm in the same boat."
+      },
+      {
+        "authorId": 1,
+        "postId": 2,
+        "content": "Maybe cut up that credit card."
+      }
+    ]
+  }
+  

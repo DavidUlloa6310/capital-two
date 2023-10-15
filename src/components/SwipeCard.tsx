@@ -16,29 +16,43 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
   handleSwipe,
   zIndex,
 }) => {
-  const removeThreshold = 500;
+  const removeThreshold = 300;
+  const [isSwiped, setIsSwiped] = useState<-1 | 1 | null>(null);
 
   const [springs, api] = useSpring(() => ({
     x: 0,
     y: 0,
     rotate: 0,
     opacity: 1,
+    // onRest: () => {
+    //   console.log("On rest running");
+    //   if (isSwiped !== null) {
+    //     console.log("isSwiped is not null", isSwiped);
+    //     handleSwipe(isSwiped);
+    //   }
+    // },
   }));
 
   const bind = useDrag(({ down, movement: [mx, my], velocity, last }) => {
     const overThreshold = Math.abs(mx) > removeThreshold;
+    //if over the threshold and mouse is up, then remove the card
+    if (overThreshold) {
+      setIsSwiped(mx < 0 ? -1 : 1);
+    }
 
     const rotation = mx / 25;
     api.start({
-      x: down ? (overThreshold ? mx * 2 : mx) : 0,
-      y: down || overThreshold ? my : 0,
-      rotate: down || overThreshold ? rotation : 0,
-      opacity: down || overThreshold ? 1 - Math.abs(mx) ** 1.08 / 1000 : 1,
+      x: down ? mx : overThreshold ? mx * 2 : 0,
+      y: down ? my : 0,
+      rotate: down ? rotation : overThreshold ? mx / 12 : 0,
+      opacity: down ? 1 - Math.abs(mx) ** 1.08 / 1000 : overThreshold ? 0 : 1,
     });
 
     if (!down && overThreshold) {
       //maybe add timeout?
-      handleSwipe(mx < 0 ? -1 : 1);
+      setTimeout(() => {
+        handleSwipe(mx < 0 ? -1 : 1);
+      }, 400);
     }
   });
 

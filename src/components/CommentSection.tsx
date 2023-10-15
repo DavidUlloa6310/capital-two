@@ -1,10 +1,9 @@
 import { useState, FormEvent, useEffect, useRef } from "react";
 import Comment from "./Comment";
-import { Comment as TComment } from "@prisma/client";
 import { IoArrowRedoOutline } from "react-icons/io5";
 import { GoCommentDiscussion } from "react-icons/go";
 import { useCommentMutation } from "@/hooks/useCommentMutation";
-import { type User } from "@prisma/client";
+import { type User, Comment as TComment } from "@prisma/client";
 
 interface CommentSectionProps {
   comments: Array<
@@ -42,9 +41,8 @@ const CommentSection = ({ id: postId, comments }: CommentSectionProps) => {
     if (!commentWrapperRef.current) {
       return;
     }
-
     commentWrapperRef.current.scrollTo({
-      top: commentWrapperRef.current.scrollTop,
+      top: -commentWrapperRef.current.scrollHeight,
       behavior: "smooth",
     });
   }, [comments]);

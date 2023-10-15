@@ -1,25 +1,50 @@
-const UserProfile = () => {
-  const [firstName, lastName] = ["Gabriel", "Pedroza"];
-  const profilePicture = "https://avatars.githubusercontent.com/u/59853942?v=4";
-  const [age, location, income] = [25, "Mexico", 100000];
+import { useState, useEffect } from "react";
+import { UserData } from "@/types/UserData";
+import Image from "next/image";
+import crypto from "crypto";
+
+const UserProfile = ({ user }: { user: UserData }) => {
+  const [profilePicture, setProfilePicture] = useState<string>();
+
+  useEffect(() => {
+    async function getProfilePicture() {
+      const uniqueId = crypto
+        .createHash("sha256")
+        .update(user.profile.email)
+        .digest("hex");
+      const response = await fetch(
+        `https://api.multiavatar.com/${uniqueId}.png`,
+      );
+      if (!response.ok) {
+        throw new Error("Was not able to create profile picture!");
+      }
+
+      const image = await response.blob();
+      const imageUrl = URL.createObjectURL(image);
+      setProfilePicture(imageUrl);
+    }
+    void getProfilePicture();
+  }, []);
 
   return (
-    <div className="flex h-[38%] w-[42%] justify-center rounded-lg border-2 border-gray-200 bg-white p-6">
-      <div className="flex items-center gap-10 space-x-4">
+    <div className="h-[38%] w-[42%] rounded-lg border-2 border-gray-200 bg-white p-6">
+      <div className="flex items-center justify-between gap-10 space-x-4">
         <div>
-          <h2 className="mb-6 text-3xl font-bold">
-            {firstName} {lastName}
-          </h2>
+          <h2 className="mb-6 text-3xl font-bold">{user.profile.name}</h2>
           <div className="text-left text-xl">
-            <p className="text-gray-600">Age: {age}</p>
-            <p className="text-gray-600">Location: {location}</p>
-            <p className="text-gray-600">Income: ${income.toLocaleString()}</p>
+            <p className="text-gray-600">Age: {user.profile.age}</p>
+            <p className="text-gray-600">Location: {user.profile.location}</p>
+            <p className="text-gray-600">
+              Income: ${user?.profile?.income?.toLocaleString()}
+            </p>
           </div>
         </div>
-        <img
-          src={profilePicture}
-          alt={`${firstName} ${lastName}`}
-          className="mx-auto h-[55%] w-[55%] rounded-md"
+        <Image
+          width={200}
+          height={200}
+          src={profilePicture as string}
+          alt={`${user.profile.name}`}
+          className="mx-auto h-[45%] w-[45%] rounded-full"
         />
       </div>
     </div>

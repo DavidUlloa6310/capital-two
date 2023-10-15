@@ -11,8 +11,9 @@ import { type User } from "@prisma/client";
 import { type Post } from "@prisma/client";
 import { GetServerSideProps } from "next";
 import PostDetails from "@/components/Profile/PostDetails";
+import { PostWithRelations } from "@/types/PostWithRelations";
 import { useUserData } from "@/hooks/useUserData";
-
+import { UserData } from "@/types/UserData";
 export default function Profile() {
   const session = useSession();
 
@@ -20,10 +21,6 @@ export default function Profile() {
     email: session?.data?.user?.email,
     isEnabled: true,
   });
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const dummyData = [
     {
@@ -47,12 +44,12 @@ export default function Profile() {
   return (
     <>
       <Navbar />
-      <main className="flex h-[40%] w-full flex-col items-center justify-center">
-        <div className="mb-12 mt-12 flex h-[50%] w-full flex-row justify-evenly ">
+      <main className="flex h-[60%] w-full flex-col items-center justify-center">
+        <div className="mb-12 mt-12 flex h-[100%] w-full flex-row justify-evenly">
           <CreatePost />
-          <UserProfile />
+          <UserProfile user={data as UserData} />
         </div>
-        <PostDetails posts={dummyData} />
+        <PostDetails posts={data?.posts as PostWithRelations[]} />
       </main>
     </>
   );

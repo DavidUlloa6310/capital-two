@@ -7,20 +7,15 @@ import PostItem from "@/components/Profile/PostItem";
 import { BiCake } from "react-icons/bi";
 import { BsCash } from "react-icons/bs";
 
-import { type PostDetailsProps } from "@/components/Profile/PostItem";
+import { type PostWithRelations } from "@/types/PostWithRelations";
 
-function PostDetails({ posts }: { posts: PostDetailsProps[] }) {
+function PostDetails({ posts }: { posts: PostWithRelations[] }) {
   return (
     <div className="mx-[50px] ">
       <h2 className=" text-roboto text-3xl font-bold">Your Posts</h2>
-      {posts.map((itemData) => {
-        return (
-          <PostItem
-            post={itemData.post}
-            averageAge={itemData.averageAge}
-            averageIncome={itemData.averageIncome}
-          />
-        );
+      {posts.length == 0 ? <h2>You have no posts!</h2> : null}
+      {posts.map((post) => {
+        return <PostItem post={post} />;
       })}
     </div>
   );

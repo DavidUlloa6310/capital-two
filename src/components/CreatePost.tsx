@@ -25,7 +25,7 @@ const CreatePost = () => {
 
   return (
     <div className="h-full w-[50%] rounded-md border-2 border-gray-200 bg-white p-4">
-      <h2 className="mb-4 text-xl font-semibold">Create a New Post</h2>
+      <h2 className="mb-4 text-2xl font-semibold">Create a New Post</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
@@ -62,11 +62,11 @@ const CreatePost = () => {
           />
         </div>
 
-        <div className="flex justify-start">
+        <div className="mt-11 flex justify-start">
           <button
             disabled={createPostMutation.isLoading}
             type="submit"
-            className="hover-bg-blue-600 rounded-md bg-blue-500 px-4 py-2 text-white"
+            className="hover-bg-blue-600 rounded-md bg-[#0f395a] px-4 py-2 text-white"
           >
             Create Post
           </button>

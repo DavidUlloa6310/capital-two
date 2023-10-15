@@ -1,6 +1,10 @@
 import { useMutation, useQueryClient, type InfiniteData } from "react-query";
-import type { PostWithRelations } from "@/types/PostWithRelations";
+import type {
+  CommentWithAuthor,
+  PostWithRelations,
+} from "@/types/PostWithRelations";
 import type { Comment } from "@prisma/client";
+import { useSession } from "next-auth/react";
 
 const addComment = ({
   content,
@@ -20,15 +24,29 @@ const addComment = ({
 
 export const useCommentMutation = () => {
   const queryClient = useQueryClient();
+  const session = useSession();
 
   return useMutation(["addComment"], addComment, {
     onMutate: async (data) => {
-      const newComment: Comment = {
+      const newComment: CommentWithAuthor = {
         ...data,
         id: Math.floor(Math.random() * 1000),
         createdAt: new Date(),
         updatedAt: new Date(),
         authorId: 1,
+        author: {
+          email: session.data!.user.email || "",
+          name: session.data!.user.name || "Anonymous",
+          id: 1,
+          age: 0,
+          last_login: new Date(),
+          emailVerified: null,
+          credit_score: null,
+          income: null,
+          location: null,
+          job_title: null,
+          image: "",
+        },
       };
 
       // Cancel any outgoing refetches

@@ -29,16 +29,6 @@ const Swipe = () => {
     console.log("Changed previous post", previousPost);
   }, [currentPost]);
 
-  // const handleSwipeLeft = () => {
-  //   performSwipe(-1);
-  //   console.log("Swiped Left");
-  // };
-
-  // const handleSwipeRight = () => {
-  //   performSwipe(1);
-  //   console.log("Swiped Right");
-  // };
-
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error has occurred: {error.message}</div>;
 
@@ -64,8 +54,6 @@ const Swipe = () => {
                     content={card.data.content}
                     author={card.data.author.name}
                     handleSwipe={performSwipe}
-                    // onSwipeLeft={handleSwipeLeft}
-                    // onSwipeRight={handleSwipeRight}
                   />
                 ),
             )}

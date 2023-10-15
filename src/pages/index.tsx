@@ -1,6 +1,9 @@
 import RegisterForm from "@/components/Form/RegisterForm";
 import Image from "next/image";
 import Link from "next/link";
+import { GetServerSideProps } from "next";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function Home() {
   return (
@@ -13,17 +16,33 @@ export default function Home() {
         <Image src="/images/swoosh.svg" alt="" layout="fill" />
       </div>
       <div className="m-5 flex h-full w-full flex-col items-center justify-center">
-        <h2 className=" text-capital_blue max-w-[800px] place-self-center justify-self-center text-center text-4xl">
+        <h2 className=" max-w-[800px] place-self-center justify-self-center text-center text-4xl text-capital_blue">
           It&rsquo;s hard to solve personal finance, when no one is willing to
           talk about it...
         </h2>
         <Link href="/api/auth/signin">
-          <button className="bg-capital_red my-4 rounded-md px-4 py-2 text-white transition-all hover:scale-125">
+          <button className="my-4 rounded-md bg-capital_red px-4 py-2 text-white transition-all hover:scale-125">
             Join Anonmyously
           </button>
         </Link>
-        {/* <RegisterForm className=" mx-10 w-[400px] self-center" /> */}
       </div>
     </main>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(req, res, authOptions);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/swipe",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

@@ -106,5 +106,3 @@ export const votePost = async (newVote: NewVote, session: Session | null) => {
     });
   }
 };
-
-function getAverageAge(post: Post) {}

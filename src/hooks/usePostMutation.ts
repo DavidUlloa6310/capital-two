@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 const createPost = ({ content, title }: { content: string; title: string }) => {
   return fetch(`/api/posts/`, {
@@ -11,7 +11,12 @@ const createPost = ({ content, title }: { content: string; title: string }) => {
 };
 
 export const usePostMutation = ({ onSuccess }: { onSuccess: () => void }) => {
+  const queryClient = useQueryClient();
+
   return useMutation(["createPost"], createPost, {
-    onSuccess,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["userData"]);
+      onSuccess();
+    },
   });
 };
