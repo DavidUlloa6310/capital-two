@@ -1,4 +1,4 @@
-import NextAuth, { type NextAuthOptions } from "next-auth";
+import NextAuth, { type NextAuthOptions } from "next-auth/index";
 import GoogleProvider from "next-auth/providers/google";
 
 import { PrismaAdapter } from "@auth/prisma-adapter";
@@ -17,17 +17,11 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    session: ({ session, user, token }) => {
-      if (session.user.id == user.id) {
-        session.userId = user.id;
+    session({ session, user }) {
+      if (session.user) {
+        session.user.id = user.id;
       }
       return session;
-    },
-    jwt: ({ token, user }) => {
-      if (token) {
-        token.userId = user?.id;
-      }
-      return token;
     },
   },
 };
