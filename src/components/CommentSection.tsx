@@ -7,8 +7,7 @@ import { useCommentMutation } from "@/hooks/useCommentMutation";
 
 interface CommentSectionProps {
   author: {
-    first_name: string;
-    last_name: string;
+    name: string;
   };
   comments: TComment[];
   id: number;
@@ -71,7 +70,7 @@ const CommentSection = ({
       <form onSubmit={submitComment} className="mt-4 flex space-x-2">
         <input
           type="text"
-          className="bg-mainGray w-full rounded border border-gray-300 bg-opacity-5 p-2 text-lg focus:outline-none disabled:bg-opacity-20"
+          className="w-full rounded border border-gray-300 bg-mainGray bg-opacity-5 p-2 text-lg focus:outline-none disabled:bg-opacity-20"
           disabled={submissionLoading}
           placeholder="Write a comment..."
           value={newComment}
@@ -85,7 +84,7 @@ const CommentSection = ({
           <IoArrowRedoOutline />
         </button>
       </form>
-      <span className="text-mainGray mt-2 flex items-center justify-start gap-1 text-base">
+      <span className="mt-2 flex items-center justify-start gap-1 text-base text-mainGray">
         <GoCommentDiscussion />
         <p>{comments.length}</p>
       </span>

@@ -1,15 +1,17 @@
 import type { Post } from "@prisma/client";
 import { db } from "@/server/db";
 import { NewVote } from "@/schemas/voteSchemas";
-import { type CreatePost } from "@/schemas/createPost";
+import { type CreatePost } from "@/schemas/postSchemas";
+import { Session } from "next-auth";
+import { getUserId } from "./getUserId";
 
 //TODO: probably don't want an array of IDs, instead cursor based pagination
 export const getPosts = async (
   {
     limit,
     cursor,
-    author,
-  }: { limit: number; cursor: number; author?: string } = {
+    authorId,
+  }: { limit: number; cursor: number; authorId?: number } = {
     //default values
     limit: 10,
     cursor: 0,
@@ -20,6 +22,7 @@ export const getPosts = async (
       id: {
         gt: cursor,
       },
+      authorId,
     },
     include: {
       comments: {
@@ -66,15 +69,20 @@ export const getPosts = async (
 // };`
 
 //TODO: update to use next-auth
-export const createPost = async (data: CreatePost) => {
+export const createPost = async (data: CreatePost, session: Session | null) => {
+  const authorId = await getUserId(session);
+
   const post = await db.post.create({
-    data,
+    data: {
+      ...data,
+      authorId,
+    },
   });
   return post;
 };
 
-export const votePost = async (newVote: NewVote) => {
-  const authorId = 1; //TODO: update to use next-auth
+export const votePost = async (newVote: NewVote, session: Session | null) => {
+  const authorId = await getUserId(session);
 
   let vote = await db.postVote.findFirst({
     where: { postId: newVote.postId, authorId },

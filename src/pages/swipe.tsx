@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useFeed } from "@/hooks/useFeed";
 import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import SigninWarning from "@/components/SigninWarning";
 
 const Swipe = () => {
   const {
@@ -42,18 +43,7 @@ const Swipe = () => {
   if (error) return <div>An error has occurred: {error.message}</div>;
 
   if (session == null) {
-    return (
-      <main className="flex min-h-screen w-screen flex-col items-center justify-center">
-        <h2 className="text-capital_blue textl-4xl">
-          Make sure to login to view other's posts.
-        </h2>
-        <button>
-          <Link href="/api/auth/signin">
-            <button>Log In</button>
-          </Link>
-        </button>
-      </main>
-    );
+    return <SigninWarning />;
   }
 
   return (
@@ -72,7 +62,7 @@ const Swipe = () => {
                     key={card.data.id}
                     zIndex={card.zIndex}
                     content={card.data.content}
-                    author={card.data.author.first_name}
+                    author={card.data.author.name}
                     handleSwipe={performSwipe}
                     // onSwipeLeft={handleSwipeLeft}
                     // onSwipeRight={handleSwipeRight}
@@ -86,7 +76,7 @@ const Swipe = () => {
             <>
               <UserInfo
                 title={currentPost.title || "a post without a title"}
-                author={`${currentPost.author.first_name} ${currentPost.author.last_name}`}
+                author={`${currentPost.author.name}`}
                 income={currentPost.author.income ?? 0}
                 location={currentPost.author.location ?? "Hidden"}
                 age={currentPost.author.age ?? 0}

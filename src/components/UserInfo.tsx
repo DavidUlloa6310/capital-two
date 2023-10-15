@@ -3,6 +3,7 @@ import { BsCash } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
 import { IconType } from "react-icons";
 import { ReactNode } from "react";
+import Data from "@/components/Data";
 
 interface UserInfoProp {
   title: string;
@@ -10,23 +11,6 @@ interface UserInfoProp {
   income: number;
   location: string;
   age: number;
-}
-
-interface DataProps {
-  data: ReactNode;
-  Icon: IconType;
-  className: HTMLDivElement["className"];
-}
-
-function Data({ data, Icon, className }: DataProps) {
-  return (
-    <div
-      className={`tex-sm flex w-fit items-center justify-start gap-2 rounded-lg px-3 py-1 text-white hover:shadow-md ${className}`}
-    >
-      <Icon />
-      <h2 className="text-sm font-light first-letter:capitalize">{data}</h2>
-    </div>
-  );
 }
 
 const UserInfo = ({ title, author, income, location, age }: UserInfoProp) => {

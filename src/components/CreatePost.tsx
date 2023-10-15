@@ -1,42 +1,30 @@
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
-import { createPost } from "@/util/createPost";
+import { usePostMutation } from "@/hooks/usePostMutation";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const session = useSession();
+  const createPostMutation = usePostMutation({
+    onSuccess: () => {
+      console.log("Post was created!");
+      setTitle("");
+      setContent("");
+    },
+  });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // Assuming you have a valid authorId in the session.
-    const authorId = Number(session.data?.user.id);
+    const postData = {
+      title,
+      content,
+    };
 
-    if (authorId) {
-      const postData = {
-        title,
-        content,
-        authorId,
-      };
-
-      // Call your createPost function with postData.
-      const createdPost = await createPost(postData);
-
-      // Handle the result as needed.
-      if (createdPost) {
-        // Post was created successfully.
-        // You can reset the form if desired.
-        setTitle("");
-        setContent("");
-      } else {
-        // Handle any errors.
-      }
-    }
+    await createPostMutation.mutateAsync(postData);
   };
 
   return (
-    <div className="rounded-md bg-white p-4 shadow-md">
+    <div className="h-full w-[42%] rounded-md border bg-white p-4">
       <h2 className="mb-4 text-xl font-semibold">Create a New Post</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -76,6 +64,7 @@ const CreatePost = () => {
 
         <div className="flex justify-end">
           <button
+            disabled={createPostMutation.isLoading}
             type="submit"
             className="hover-bg-blue-600 rounded-md bg-blue-500 px-4 py-2 text-white"
           >
