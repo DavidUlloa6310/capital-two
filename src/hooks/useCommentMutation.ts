@@ -6,13 +6,9 @@ import type {
 import type { Comment } from "@prisma/client";
 import { useSession } from "next-auth/react";
 
-const addComment = ({
-  content,
-  postId,
-}: {
-  content: string;
-  postId: number;
-}) => {
+type AddComment = Pick<Comment, "id" | "content" | "postId">;
+
+const addComment = ({ content, postId }: AddComment) => {
   return fetch(`/api/posts/${postId}/comment`, {
     method: "POST",
     body: JSON.stringify({ content, postId }),

@@ -1,4 +1,4 @@
-import type { Post } from "@prisma/client";
+import type { Post, PostVote } from "@prisma/client";
 import { db } from "@/server/db";
 import { NewVote } from "@/schemas/voteSchemas";
 import { type CreatePost } from "@/schemas/postSchemas";
@@ -84,7 +84,7 @@ export const createPost = async (data: CreatePost, session: Session | null) => {
 export const votePost = async (newVote: NewVote, session: Session | null) => {
   const authorId = await getUserId(session);
 
-  let vote = await db.postVote.findFirst({
+  const vote = await db.postVote.findFirst({
     where: { postId: newVote.postId, authorId },
   });
 

@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "react-query";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useVoteMutation } from "@/hooks/useVoteMutation";
 import type { PostWithRelations } from "@/types/PostWithRelations";
 
@@ -10,7 +10,7 @@ const fetchFeed = async ({ pageParam = 0 }) => {
   const posts = await fetch(
     `/api/posts?cursor=${pageParam}?limit=${POSTS_PER_PAGE}`,
   );
-  return posts.json();
+  return posts.json() as Promise<Post[]>;
 };
 
 export const useFeed = () => {
@@ -70,7 +70,7 @@ export const useFeed = () => {
     if (newIndex < 0 || numPostsRemaining <= 0) return;
     // Check if we need to fetch more posts
     if (numPostsRemaining < REFETCH_BUFFER) {
-      fetchNextPage();
+      await fetchNextPage();
     }
 
     setCurrentIndex(newIndex);
