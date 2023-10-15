@@ -5,7 +5,11 @@ import { type CreatePost } from "@/schemas/createPost";
 
 //TODO: probably don't want an array of IDs, instead cursor based pagination
 export const getPosts = async (
-  { limit, cursor }: { limit: number; cursor: number } = {
+  {
+    limit,
+    cursor,
+    author,
+  }: { limit: number; cursor: number; author?: string } = {
     //default values
     limit: 10,
     cursor: 0,

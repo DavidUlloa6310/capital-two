@@ -1,16 +1,42 @@
+import { type NewComment } from "@/schemas/commentSchemas";
 import { db } from "@/server/db";
-import type { Comment } from "@prisma/client";
-import { newCommentSchema, type NewComment } from "@/schemas/commentSchemas";
+import { Session } from "next-auth";
 
-//No method to get comments since that's included in the getPost method
+export const createComment = async (
+  comment: NewComment,
+  session: Session | null,
+) => {
+  // Get the user session
+  console.log("\n\nGetting session\n\n");
 
-export const createComment = async (comment: NewComment) => {
-  const authorId = 1; //TODO: get authorId from session
+  // const session = await getServerSession(req, res, authOptions);
+
+  if (!session || !session.user?.email) {
+    throw new Error("User not authenticated");
+  }
+
+  console.log("session:", session);
+
+  const authorEmail = session.user?.email;
+  const user = await db.user.findUnique({
+    where: {
+      email: "jschuster8765@gmail.com",
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  console.log("user:", user);
+
+  if (!user) {
+    throw new Error("User not found");
+  }
 
   const result = await db.comment.create({
     data: {
       ...comment,
-      authorId,
+      authorId: user.id,
     },
   });
 

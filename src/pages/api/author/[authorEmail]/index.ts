@@ -9,11 +9,11 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "GET":
-      const { authorId } = req.query;
+      const { authEmail } = req.query;
 
-      const userInfo = await prisma.user.findUnique({
+      const userInfo = await prisma.user.findFirst({
         where: {
-          id: +authorId!,
+          email: authEmail as string,
         },
         include: {
           posts: true,

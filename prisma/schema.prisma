@@ -34,7 +34,7 @@ model Account {
     scope             String?
     id_token          String? // @db.Text
     session_state     String?
-    // user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
 }
@@ -44,7 +44,7 @@ model Session {
     sessionToken String   @unique
     userId       Int
     expires      DateTime
-    // user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
@@ -56,22 +56,25 @@ model VerificationToken {
 }
 
 model User {
-    id           Int        @id @default(autoincrement())
-    first_name   String
-    last_name    String
-    email        String     @unique
-    age          Int
-    last_login   DateTime?
+    id            Int        @id @default(autoincrement())
+    name          String
+    email         String     @unique
+    age           Int?
+    last_login    DateTime?
+    image         String?
+    emailVerified Boolean?
     //Financial information
-    credit_score Int?
-    income       Int?
-    location     String?
-    job_title    String?
-    // accounts     Account[]
-    // sessions     Session[]
-    posts        Post[]
-    comments     Comment[]
-    post_votes   PostVote[]
+    credit_score  Int?
+    income        Int?
+    location      String?
+    job_title     String?
+    accounts      Account[]
+    sessions      Session[]
+    posts         Post[]
+    comments      Comment[]
+    post_votes    PostVote[]
+    // Account      Account[]
+    // Session      Session[]
 }
 
 model Post {

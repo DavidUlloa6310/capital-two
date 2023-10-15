@@ -7,8 +7,7 @@ async function main() {
 
   const userData = {
     email: `user@example.com`,
-    first_name: `User`,
-    last_name: `Lastname`,
+    name: "test name",
     age: 25, // You can adjust this as needed
     income: 50000, // You can adjust this as needed
     credit_score: 650,
