@@ -10,18 +10,17 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
+  const session = await getServerSession(req, res, authOptions);
+  if (!session) {
+    return res.status(401).end();
+  }
+  const { authorEmail } = req.query;
+  const author = await prisma.user.findUnique({
+    where: { email: authorEmail as string },
+  });
+
   switch (req.method) {
     case "GET":
-      const session = await getServerSession(req, res, authOptions);
-      if (!session) {
-        return res.status(401).end();
-      }
-
-      const { authorEmail } = req.query;
-      const author = await prisma.user.findUnique({
-        where: { email: authorEmail as string },
-      });
-
       if (!author) {
         return res.status(404).end();
       }
@@ -36,6 +35,31 @@ export default async function handler(
         profile: author,
         posts,
       });
+    case "POST":
+      if (!author) {
+        return res.status(404).end();
+      }
+      let income: number, age: number, location: string;
+
+      if (typeof req.body === "string") {
+        ({ income, age, location } = JSON.parse(req.body));
+      } else {
+        ({ income, age, location } = req.body);
+      }
+
+      const updateAuthor = await prisma.user.update({
+        where: {
+          email: authorEmail as string,
+        },
+        data: { income, age, location },
+        select: {
+          income: true,
+          age: true,
+          location: true,
+        },
+      });
+
+      return updateAuthor;
     default:
       return res.status(405).end();
   }

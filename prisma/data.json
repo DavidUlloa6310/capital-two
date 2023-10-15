@@ -353,185 +353,110 @@
    ],
     "posts": [
       {
-        "content": "Decided to invest in a 'sure thing'—my nephew's lemonade stand. Return on investment: zero. But hey, the lemonade is pretty decent.",
+        "content": "Decided to invest in a 'sure thing'—my nephew's lemonade stand. Return on investment: zero. But hey, the lemonade is pretty decent, and seeing him smile? Priceless.",
         "title": "The Lemonade Stand Fiasco",
         "authorId": 12
-      },
-      {
-        "content": "Turns out, budgeting is like dieting, but for your wallet. Still failing at both.",
+    },
+    {
+        "content": "Turns out, budgeting is like dieting, but for your wallet. Still failing at both, but hey, at least I'm consistent.",
         "title": "Budgeting: The Diet I Never Wanted",
         "authorId": 27
-      },
-      {
-        "content": "Just bought stocks for the first time. Feeling like a Wolf of Wall Street, but more like a Chihuahua of Main Street.",
+    },
+    {
+        "content": "Just bought stocks for the first time. Feeling like a Wolf of Wall Street, but more like a Chihuahua of Main Street. It's the start of a financially furry journey!",
         "title": "The Chihuahua of Wall Street",
         "authorId": 3
-      },
-      {
-        "content": "Joined a couponing group to save money. Now I have a lifetime supply of toothpaste but no money left.",
+    },
+    {
+        "content": "Joined a couponing group to save money. Now I have a lifetime supply of toothpaste but no money left. At least I’ll have the brightest smile in the breadline.",
         "title": "Extreme Couponing: My Toothpaste Saga",
         "authorId": 14
-      },
-      {
-        "content": "I've decided to diversify my investment portfolio. Currently, it's 90% coffee and 10% regret.",
+    },
+    {
+        "content": "I've decided to diversify my investment portfolio. Currently, it's 90% coffee and 10% regret. Considering adding a slice of hope in there somewhere.",
         "title": "Coffee & Regrets Portfolio",
         "authorId": 8
-      },
-      {
-        "content": "Who knew adulting would mean getting excited about a credit score update? What's next, celebrating tax season?",
+    },
+    {
+        "content": "Who knew adulting would mean getting excited about a credit score update? What's next, celebrating tax season with cake and balloons? Oh, the thrilling unpredictability of grown-up life.",
         "title": "Credit Score Fever",
         "authorId": 41
-      },
-      {
-        "content": "I was told to save money for a rainy day. It finally rained today, and I spent all the money on a raincoat and boots.",
+    },
+    {
+        "content": "I was told to save money for a rainy day. It finally rained today, and I spent all the money on a raincoat and boots. At least, I stayed dry while waving my financial prudence goodbye.",
         "title": "A Rainy Day Indeed",
         "authorId": 21
-      },
-      {
-        "content": "I tried to become financially literate, but it's like learning a foreign language where every word is 'taxes'.",
+    },
+    {
+        "content": "I tried to become financially literate, but it's like learning a foreign language where every word is 'taxes'. It's a cruel, numerical world out there.",
         "title": "The Financial Rosetta Stone",
         "authorId": 17
-      },
-      {
-        "content": "Saving money by cooking at home. So far, the fire department has shown up twice. Still a work in progress.",
+    },
+    {
+        "content": "Saving money by cooking at home. So far, the fire department has shown up twice. Still a work in progress, but on the bright side, I now know all the local firefighters by name.",
         "title": "Chef or Fire Hazard?",
         "authorId": 32
-      },
-      {
-        "content": "Decided to cut the cable to save money. Now I spend my time arguing about what to watch on three different streaming services.",
+    },
+    {
+        "content": "Decided to cut the cable to save money. Now I spend my time arguing about what to watch on three different streaming services. It’s the paradox of choice in the digital age.",
         "title": "Streaming Wars",
         "authorId": 45
-      },
-      {
-        "content": "Credit card debt is killing me. Need help to get out of it.",
+    },
+    {
+        "content": "Credit card debt is killing me. Need help to get out of it. It's like a high-interest rate shadow lurking around every purchase I make.",
         "title": "Drowning in Debt",
         "authorId": 4
-      },
-      {
-        "content": "Just paid off my student loan! Feeling free!",
+    },
+    {
+        "content": "Just paid off my student loan! Feeling free! It's like I’ve just emerged from a decade-long tunnel filled with menacingly accumulating interest.",
         "title": "Debt-Free at Last",
         "authorId": 17
-      },
-      {
-        "content": "Invested in some blue-chip stocks today. Feeling optimistic.",
+    },
+    {
+        "content": "Invested in some blue-chip stocks today. Feeling optimistic. It's a bit like betting on the tortoise in a financial race filled with hares.",
         "title": "Stock Investment",
         "authorId": 23
-      },
-      {
-        "content": "After much thought, I decided to refinance my mortgage. Got a lower interest rate and feeling good about it.",
+    },
+    {
+        "content": "After much thought, I decided to refinance my mortgage. Got a lower interest rate and feeling good about it. It's like finding out you can actually upgrade to first class without selling a kidney.",
         "title": "Mortgage Refinance",
         "authorId": 8
-      },
-      {
-        "content": "I started investing in the stock market last year and it's been a rollercoaster. The initial gains were amazing and got me really excited, but then I experienced my first market downturn and it was stressful. I'm learning that investing is a long-term commitment and not a get-rich-quick scheme. Trying to keep my emotions in check.",
+    },
+    {
+        "content": "I started investing in the stock market last year and it's been a rollercoaster. The initial gains were amazing and got me really excited, but then I experienced my first market downturn and it was stressful. I'm learning that investing is a long-term commitment and not a get-rich-quick scheme. Trying to keep my emotions in check, which is harder than checking the market every five minutes.",
         "title": "The Ups and Downs of Stock Investing",
         "authorId": 12
-      },
-      {
-        "content": "So, I bought a used car last week and thought I got a great deal, only to find out it needs major repairs. I should've gotten it checked by a mechanic before purchasing. It's a hard lesson in the importance of due diligence. Now I have to figure out whether to sink more money into it or cut my losses.",
+    },
+    {
+        "content": "So, I bought a used car last week and thought I got a great deal, only to find out it needs major repairs. I should've gotten it checked by a mechanic before purchasing. It's a hard lesson in the importance of due diligence. Now I have to figure out whether to sink more money into it or cut my losses. It's like the vehicular version of a money pit.",
         "title": "Used Car Woes",
         "authorId": 6
-      },
-      {
-        "content": "I'm in my late 20s and only just now starting to seriously think about my financial future. I have some student loan debt and haven't been saving much. Looking at all the advice out there, it's easy to feel like I'm already behind. Trying to not get overwhelmed and just start taking steps to improve my financial health.",
+    },
+    {
+        "content": "I'm in my late 20s and only just now starting to seriously think about my financial future. I have some student loan debt and haven't been saving much. Looking at all the advice out there, it's easy to feel like I'm already behind. Trying to not get overwhelmed and just start taking steps to improve my financial health. It's a late start on the road to fiscal responsibility, but better late than never, right?",
         "title": "Late Starter in Financial Planning",
         "authorId": 49
-      },
-      {
-        "content": "I finally set up a retirement account. Better late than never.",
+    },
+    {
+        "content": "I finally set up a retirement account. Better late than never. It’s like planting a money tree, but you can’t enjoy the shade for another few decades.",
         "title": "Securing My Future",
         "authorId": 36
-      },
-      {
-        "content": "Decided to refinance my mortgage to take advantage of low interest rates. I'm saving $200 a month now!",
+    },
+    {
+        "content": "Decided to refinance my mortgage to take advantage of low interest rates. I'm saving $200 a month now! It's like getting a small monthly bonus for doing some paperwork.",
         "title": "Mortgage Win",
         "authorId": 3
-      },
-      {
-        "content": "Took a risk on some penny stocks and lost a bit of money. Not doing that again.",
+    },
+    {
+        "content": "Took a risk on some penny stocks and lost a bit of money. Not doing that again. It was like betting on a horse with three legs—exciting but doomed from the start.",
         "title": "Investment Fail",
         "authorId": 12
-      },
-      {
-        "content": "Just checked my credit report and found an error. Make sure to check yours!",
+    },
+    {
+        "content": "Just checked my credit report and found an error. Make sure to check yours! It's like reading the terms and conditions of your financial life.",
         "title": "Credit Alert",
         "authorId": 28
-      },
-      {
-        "content": "Missed a credit card payment and my score dropped. Feeling defeated.",
-        "title": "Payment Slip",
-        "authorId": 48
-      },
-      {
-        "content": "Bought an extended warranty for my car and it turned out to be a wise decision. Already saved me $600 in repairs.",
-        "title": "Warranty Wisdom",
-        "authorId": 15
-      },
-      {
-        "content": "After months of hard work, I've finally paid off my credit card debt. Never felt so free.",
-        "title": "Debt-Free Milestone",
-        "authorId": 10
-      },
-      {
-        "content": "Got scammed while trying to buy a second-hand phone online. Be careful, folks!",
-        "title": "Scam Alert",
-        "authorId": 22
-      },
-      {
-        "content": "I subscribed to a food delivery service. It's convenient but affecting my budget negatively.",
-        "title": "Convenience Costs",
-        "authorId": 33
-      },
-      {
-        "content": "Just completed a course on personal finance. Feeling empowered to take control of my finances!",
-        "title": "Knowledge is Power",
-        "authorId": 43
-      },
-      {
-        "content": "My car broke down and I had no emergency fund. Had to borrow money from family. It's time to start saving.",
-        "title": "Emergency Fund Needed",
-        "authorId": 50
-      },
-      {
-        "content": "Successfully saved 10% of my income this month. Small steps can make a big difference.",
-        "title": "Small Steps",
-        "authorId": 27
-      },
-      {
-        "content": "Had to pay a huge fine for missing the tax deadline. Don't make the same mistake.",
-        "title": "Tax Troubles",
-        "authorId": 2
-      },
-      {
-        "content": "Considering downsizing my home to save money. Less space, more financial freedom?",
-        "title": "Downsizing Dilemma",
-        "authorId": 36
-      },
-      {
-        "content": "Invested in some artwork. Besides the aesthetic value, it's a decent investment too.",
-        "title": "Art as Investment",
-        "authorId": 4
-      },
-      {
-        "content": "Started a side hustle last month. It's been challenging but it's bringing in extra income.",
-        "title": "Side Hustle",
-        "authorId": 29
-      },
-      {
-        "content": "Just filed my taxes by myself for the first time. It was easier than I thought!",
-        "title": "Tax Filing Accomplished",
-        "authorId": 11
-      },
-      {
-        "content": "Took out a payday loan and now I'm stuck in a cycle. Looking for a way out.",
-        "title": "Payday Loan Pitfall",
-        "authorId": 5
-      },
-      {
-        "content": "I've been contributing to my company's 401(k) but I'm not sure if it's the best option. Should I consider an IRA?",
-        "title": "Retirement Planning",
-        "authorId": 8
-      },
+    },
       {
         "content": "I bought an electric scooter and it's saving me so much in commuting costs!",
         "title": "Eco-Friendly Savings",

@@ -90,7 +90,9 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
       <div
         className={`relative top-5 ml-5 mr-4 h-[84%] w-[93%] transform rounded-md border bg-white p-4 shadow-md`}
       >
-        <p className="w-full text-3xl font-light leading-normal">{content}</p>
+        <p className="h-full w-full overflow-y-scroll text-3xl font-light leading-normal">
+          {content}
+        </p>
         <Image
           priority
           src={"/content_triangle_ish.svg"}

@@ -64,6 +64,16 @@ const UserProfile = ({ user }: { user: UserData }) => {
     void getProfilePicture();
   }, []);
 
+  async function saveUserData() {
+    const request = await fetch(`/api/author/${user.profile.email}/`, {
+      method: "POST",
+      body: JSON.stringify({ income: parseInt(income || ""), age, location }),
+    });
+
+    const response = await request.json();
+    console.log(response);
+  }
+
   return (
     <div className="h-[21.5rem] w-[42%] rounded-lg border border-gray-200 bg-mainGray bg-opacity-5 p-6 transition-all hover:bg-opacity-10 hover:shadow">
       <div className="flex items-center justify-between gap-10 space-x-4">
@@ -117,7 +127,7 @@ const UserProfile = ({ user }: { user: UserData }) => {
         )}
       </div>
       {isModified && (
-        <button className="ml-5" type="button">
+        <button className="ml-5" type="button" onClick={saveUserData}>
           Save
         </button>
       )}
