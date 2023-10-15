@@ -9,6 +9,8 @@ export default {
         lilita: "Lilita One",
       },
       colors: {
+        capital_blue: "#0E395A",
+        capital_red: "#FF374F",
         primary: "#0E395A",
         secondary: "#FF374F",
         mainGray: "#9F9F9F",
