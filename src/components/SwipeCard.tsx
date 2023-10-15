@@ -47,7 +47,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
 
   return (
     <Draggable
-      bounds={{ right: 500, left: -500, top: -100, bottom: 100 }}
+      // bounds={{ right: 500, left: -500, top: -100, bottom: 100 }}
       onDrag={handleDrag}
       onStop={handleStop}
     >
