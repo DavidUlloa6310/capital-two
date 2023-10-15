@@ -15,6 +15,9 @@ export default async function handler(
         where: {
           id: +authorId!,
         },
+        include: {
+          posts: true,
+        },
       });
 
       return res.status(200).json(userInfo);

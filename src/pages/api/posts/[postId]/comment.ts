@@ -3,7 +3,7 @@ import { createComment } from "@/util/comments";
 import { newCommentSchema } from "@/schemas/commentSchemas";
 import z from "zod";
 
-export default async function getPostsHandler(
+export default async function createCommentsHandler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {

@@ -28,27 +28,15 @@ const Swipe = () => {
     console.log("Changed previous post", previousPost);
   }, [currentPost]);
 
-  const handleSwipeLeft = () => {
-    setHasSwipedLeft(true);
-    performSwipe(-1);
-    console.log("Swiped Left");
+  // const handleSwipeLeft = () => {
+  //   performSwipe(-1);
+  //   console.log("Swiped Left");
+  // };
 
-    setTimeout(() => {
-      setHasSwipedLeft(false);
-    }, 400);
-  };
-
-  const handleSwipeRight = () => {
-    setHasSwipedRight(true);
-    performSwipe(1);
-    console.log("Swiped Right");
-
-    setTimeout(() => {
-      setHasSwipedRight(false);
-    }, 400);
-  };
-  const [hasSwipedRight, setHasSwipedRight] = useState(false);
-  const [hasSwipedLeft, setHasSwipedLeft] = useState(false);
+  // const handleSwipeRight = () => {
+  //   performSwipe(1);
+  //   console.log("Swiped Right");
+  // };
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error has occurred: {error.message}</div>;
@@ -71,8 +59,8 @@ const Swipe = () => {
   return (
     <main>
       <Navbar />
-      <div className="grid grid-cols-8 gap-20 p-5">
-        <div className="align-center col-span-3 flex items-center justify-center">
+      <div className="grid grid-cols-9 gap-8 p-5">
+        <div className="align-center col-span-4 flex items-center justify-center">
           <div className="relative h-[700px] w-[500px]">
             {[
               { data: nextPost, zIndex: 1 },
@@ -81,12 +69,13 @@ const Swipe = () => {
               (card, index) =>
                 card.data && (
                   <SwipeCard
-                    key={index}
+                    key={card.data.id}
                     zIndex={card.zIndex}
                     content={card.data.content}
                     author={card.data.author.first_name}
-                    onSwipeLeft={handleSwipeLeft}
-                    onSwipeRight={handleSwipeRight}
+                    handleSwipe={performSwipe}
+                    // onSwipeLeft={handleSwipeLeft}
+                    // onSwipeRight={handleSwipeRight}
                   />
                 ),
             )}
@@ -98,7 +87,7 @@ const Swipe = () => {
               <UserInfo
                 title={currentPost.title || "a post without a title"}
                 author={`${currentPost.author.first_name} ${currentPost.author.last_name}`}
-                income={123123123123}
+                income={currentPost.author.income ?? 0}
                 location={currentPost.author.location ?? "Hidden"}
                 age={currentPost.author.age ?? 0}
               />

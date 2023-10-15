@@ -33,7 +33,6 @@ const UserInfo = ({ title, author, income, location, age }: UserInfoProp) => {
   return (
     <>
       <div>
-        <h3 className="text-sm">{author}</h3>
         <h1 className="text-3xl font-semibold first-letter:capitalize">
           {title}
         </h1>

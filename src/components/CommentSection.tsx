@@ -2,6 +2,7 @@ import { useState, FormEvent, useEffect, useRef } from "react";
 import Comment from "./Comment";
 import { Comment as TComment } from "@prisma/client";
 import { IoArrowRedoOutline } from "react-icons/io5";
+import { GoCommentDiscussion } from "react-icons/go";
 import { useCommentMutation } from "@/hooks/useCommentMutation";
 
 interface CommentSectionProps {
@@ -45,7 +46,7 @@ const CommentSection = ({
     }
 
     commentWrapperRef.current.scrollTo({
-      top: 0,
+      top: commentWrapperRef.current.scrollTop,
       behavior: "smooth",
     });
   }, [comments]);
@@ -54,7 +55,7 @@ const CommentSection = ({
     <div className="mr-8 mt-10 h-fit rounded border border-gray-300 p-4">
       <h3 className="mb-4 text-xl font-semibold">Comments</h3>
       <div
-        className="flex max-h-[22rem] w-full flex-col-reverse items-center justify-center space-y-4 overflow-y-scroll"
+        className="flex h-[24rem] w-full flex-col-reverse items-center justify-center space-y-4 overflow-y-scroll"
         ref={(e) => (commentWrapperRef.current = e)}
       >
         {comments.map(({ authorId, content }, index) => (
@@ -83,6 +84,10 @@ const CommentSection = ({
           <IoArrowRedoOutline />
         </button>
       </form>
+      <span>
+        <GoCommentDiscussion />
+        <p>{comments.length}</p>
+      </span>
     </div>
   );
 };

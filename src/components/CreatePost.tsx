@@ -1,6 +1,11 @@
 import React from "react";
+import { createPost } from "@/util/createPost";
 
 const CreatePost = () => {
+  // const post = createPost({
+
+  // })
+
   return (
     <div className="rounded-md bg-white p-4 shadow-md">
       <h2 className="mb-4 text-xl font-semibold">Create a New Post</h2>

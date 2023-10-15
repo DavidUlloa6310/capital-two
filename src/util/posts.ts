@@ -1,6 +1,7 @@
 import type { Post } from "@prisma/client";
 import { db } from "@/server/db";
 import { NewVote } from "@/schemas/voteSchemas";
+import { type CreatePost } from "@/schemas/createPost";
 
 //TODO: probably don't want an array of IDs, instead cursor based pagination
 export const getPosts = async (
@@ -61,7 +62,7 @@ export const getPosts = async (
 // };`
 
 //TODO: update to use next-auth
-export const createPost = async (data: Post) => {
+export const createPost = async (data: CreatePost) => {
   const post = await db.post.create({
     data,
   });

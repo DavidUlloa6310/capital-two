@@ -5,35 +5,35 @@ import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 interface SwipeCardProps {
   author: string;
   content: string;
-  onSwipeLeft: () => void;
-  onSwipeRight: () => void;
+  handleSwipe: (direction: 1 | -1) => void;
   zIndex: number;
 }
 
 const SwipeCard: React.FC<SwipeCardProps> = ({
   author,
   content,
-  onSwipeLeft,
-  onSwipeRight,
+  handleSwipe,
   zIndex,
 }) => {
   const removeThreshold = 300;
   const [hasSwiped, setHasSwiped] = useState(false);
   const [offset, setOffset] = useState(0);
 
-  const handleSwipe = (direction: string) => {
-    if (direction === "left") {
-      onSwipeLeft();
-    } else if (direction === "right") {
-      onSwipeRight();
-    }
-  };
+  // const handleSwipe = (direction: string) => {
+  //   if (direction === "left") {
+  //     onSwipeLeft();
+  //   } else if (direction === "right") {
+  //     onSwipeRight();
+  //   }
+  // };
 
   const handleStop = (_: DraggableEvent, data: DraggableData) => {
-    if (Math.abs(data.x) > removeThreshold) {
-      setHasSwiped(true);
-      handleSwipe(data.x < 0 ? "left" : "right");
+    if (Math.abs(offset) > removeThreshold) {
+      return;
     }
+
+    //If the user didn't swipe far enough, animate the card back to the center
+    setOffset(0);
   };
 
   const handleDrag = (_: DraggableEvent, data: DraggableData) => {
@@ -42,12 +42,17 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
 
     if (Math.abs(offset) > removeThreshold) {
       setHasSwiped(true);
+
+      setTimeout(() => {
+        handleSwipe(offset < 0 ? -1 : 1);
+      }, 400);
     }
   };
 
   return (
     <Draggable
-      // bounds={{ right: 500, left: -500, top: -100, bottom: 100 }}
+      bounds={{ right: 500, left: -500, top: -100, bottom: 100 }}
+      position={{ x: offset, y: 0 }}
       onDrag={handleDrag}
       onStop={handleStop}
     >
@@ -58,10 +63,10 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
           left: 0,
           zIndex: zIndex,
           animation: hasSwiped
-            ? "fadeOutAndFallRight 0.4s linear"
-            : // : hasSwipedLeft
-              // ? "fadeOutAndFallLeft 0.4s linear"
-              "none",
+            ? `${
+                offset > 0 ? "fadeOutAndFallRight" : "fadeAndFallOutLeft"
+              } 0.4s linear`
+            : "none",
         }}
       >
         <div
